@@ -1,0 +1,18 @@
+{
+	"apps" : [
+        {
+            "name"        : "jackblog-vue",
+            "script"      : "./server.js",
+            "log_date_format"  : "YYYY-MM-DD HH:mm Z",
+            "out_file"   : "./logs/pm2-out.log",
+            "error_file" : "./logs/pm2-err.log",
+            "pid_file"   : "./logs/jackblog-vue.pid",
+            "ignoreWatch" : ["[\\/\\\\]\\./", "node_modules"],
+            "watch"       : "false",
+            "exec_mode"  : "fork_mode", //cluster_mode
+            "env": {
+              "NODE_ENV": "production"
+            }
+        }
+    ]
+}
