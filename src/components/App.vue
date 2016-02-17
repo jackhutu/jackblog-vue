@@ -39,7 +39,7 @@
       <button class="clear-completed"
         v-show="todos.length > remaining"
         @click="clearCompleted">
-        Clear completed
+        Clear completed 
       </button>
     </footer>
   </section>
