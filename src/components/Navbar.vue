@@ -11,13 +11,15 @@
 
 		  <div class="navbar-expanded">
 		      <div>
+			      <a class="navbar-item expanded-version" href="http://vue.jackhu.top" title="Vue">
+			      	<img src='http://upload.jackhu.top/icons/vue.png-32x32' /> 
+			      </a>
 			      <a class="navbar-item expanded-version" href="http://redux.jackhu.top" title="React">
 			        <img src='http://upload.jackhu.top/icons/react.png-32x32' /> 
 			      </a>
 			      <a class="navbar-item expanded-version" href="http://angular1.jackhu.top" title="Angular1.x">
 			      	<img src='http://upload.jackhu.top/icons/AngularJS.png-32x32' /> 
 			      </a>
-
 		        <a class="navbar-item change-mode" href="javascript:;" @click="changeMode()">
 		        	<i v-if="styleMode === 'day-mode'" class="fa fa-moon-o"></i>
 		        	<i v-else class="fa fa-sun-o"></i>
@@ -64,10 +66,25 @@
 			  	</a>
 		  	</div>
 		  	<div class="pull-right">
-		  	  <a class="navbar-item change-mode" href="javascript:;" @click="changeMode()">
-			  	  <i v-if="styleMode === 'day-mode'" class="fa fa-moon-o"></i>
-			  	  <i v-else class="fa fa-sun-o"></i>
+  	  	  <a class="navbar-item change-mode" href="javascript:;" @click="changeMode()">
+  		  	  <i v-if="styleMode === 'day-mode'" class="fa fa-moon-o"></i>
+  		  	  <i v-else class="fa fa-sun-o"></i>
+  	  	  </a>
+		  	</div>
+		  	<div class="pull-right"> 
+		  	  <a class="navbar-item expanded-version" href="http://angular1.jackhu.top" title="Angular1.x">
+		  	  	<img src='http://upload.jackhu.top/icons/AngularJS.png-16x16' /> 
 		  	  </a>
+		  	</div>
+		  	<div class="pull-right">
+		  	  <a class="navbar-item expanded-version" href="http://redux.jackhu.top" title="React">
+		  	    <img src='http://upload.jackhu.top/icons/react.png-16x16' /> 
+		  	  </a>
+				</div>
+		  	<div class="pull-right">
+			  	<a class="navbar-item expanded-version" href="http://vue.jackhu.top" title="Vue">
+			  		<img src='http://upload.jackhu.top/icons/vue.png-16x16' /> 
+			  	</a>
 		  	</div>
 		  </div>
 		</div>
