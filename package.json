@@ -66,6 +66,7 @@
   },
   "dependencies": {
     "express": "^4.13.4",
+    "pm2": "^0.15.10",
     "serve-favicon": "^2.3.0"
   }
 }

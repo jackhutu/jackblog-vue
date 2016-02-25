@@ -67,7 +67,7 @@ module.exports = {
   },
   resolve: {
     root: path.resolve(__dirname, 'node_modules'),
-    extensions: ['','.js','.scss']
+    extensions: ['','.js','.vue','.scss']
   }
 }
 

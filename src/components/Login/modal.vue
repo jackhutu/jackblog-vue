@@ -35,7 +35,9 @@
 			}
 		},
 		created () {
-		  getSnsLogins()
+			if(this.logins.length < 1){
+				getSnsLogins()
+			}
 		},
 		methods: {
 			showModal(){
