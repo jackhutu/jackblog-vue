@@ -1,0 +1,300 @@
+.article-box{
+    @include public-box;
+}
+
+//文章内容
+.article-container {
+    .title {
+        word-break: break-all;
+        font:{
+            size: 2.2em;
+            weight:bold;
+        }
+        line-height: 1.5;
+    }
+    .counts {
+        margin: 20px 0;
+        span{
+            position: relative;
+            top: 1px;
+            margin-right: 10px;
+            font-size: $font-size-small;
+        }
+    }
+
+    //markdown文章内容部分
+    @at-root .markdown-content{
+    	font-size: 16px;
+    	font-weight: normal;
+    	line-height: 1.7;
+    	h1{
+    		font-size: 26px;
+    	}
+    	p,ul,ol{
+            //单词不截断换行,两端对齐,美化页面
+    		text-align: justify;
+    		text-justify: inter-ideograph;
+    		word-break: break-word;
+    	}
+    	p{
+    		margin-bottom:25px;
+    	}
+    	blockquote{
+    		position: relative;
+    		padding: 10px 15px;
+    		margin-bottom: 20px;
+    		border-left:{
+                width:4px;
+                style:solid;
+            };
+    		word-break: break-word;
+    		font-size: 15px;
+    		font-weight: 100;
+    		line-height: 30px;
+            p{
+               font-size: 15px;
+               font-weight: normal;
+               line-height: 1.7;         
+            }
+            p:last-child{
+                margin: 0;
+            }
+    	}
+    	ul{
+    		margin-bottom: 20px;
+            li{
+                line-height: 30px;
+            }
+    	}
+        img{
+            max-width:100%;
+            display:block;margin:0 auto;
+        }
+        pre{
+            word-wrap: normal;
+            word-break: normal;
+            overflow: auto;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0,0,0,0.15);
+            code{
+                padding: 0;
+            }
+        }
+        code{
+            padding: 2px 4px;
+            border: none;
+            white-space: pre;
+        }
+    }
+}
+//喜欢部分
+.article-share {
+    margin-bottom: 40px;
+    @at-root a.like-btn {
+        display: block;
+        position: relative;
+        float: left;
+        width: 160px;
+        height: 50px;
+        border: 1px solid $tagActiveBgColor;
+        @include border-radius(40px);
+        font-size: 18px;
+        text-align: center;
+        line-height: 50px;
+        overflow: hidden;
+        color: $tagActiveBgColor;
+        @include transition(all .5s);
+        .like-content {
+            display: inline-block;
+            position: absolute;
+            left:0;
+            width: 70%;
+            line-height: 50px;
+            vertical-align: middle;
+            padding-right: 10px;
+        }
+        .like-count {
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            width: 30%;
+            line-height: 50px;
+            vertical-align: middle;
+            border-left: 1px solid;
+        }
+        &:hover{
+            color: $tagActiveBgColor;
+            background:#f6cec7;border-color:#f6cec7;
+        }
+    }
+    a.note-liked{
+        border-color: #de533c;
+        background-color: #de533c;
+        color:white;
+    }
+}
+
+//评论部分
+.comment-container {
+    margin-bottom: 30px;
+    font-size: $commentFontSize;
+    //头部
+    .comment-head {
+        margin-bottom: 25px;
+        border-top:{
+            width:1px;
+            style: solid;
+        }
+        border-bottom:{
+            width:1px;
+            style: solid;
+        }
+        font:{
+            size:$font-size-small;
+        }
+        line-height: 52px;
+        a.goto-comment {
+            margin: 0 5px;
+        }
+    }
+    //评论内容
+    @at-root .comment-item {
+        margin-bottom: 20px;
+        border-bottom: {
+            width:1px;
+            style:solid;
+        };
+        font-size: 16px;
+        line-height: 1.5;
+        //内容顶部
+        .meta-top {
+            padding-top: 10px;
+            margin: 0 0 10px;
+            .avatar {
+                width: 35px;
+                height: 35px;
+                display: inline-block;
+                float: left;
+                margin-right: 10px;
+                line-height: 1%;
+                img {
+                    width:100%;height: 100%;
+                    border: none;
+                }
+            }
+
+            .reply-time {
+                position: relative;
+                top: 1px;
+                margin-top: 3px;
+                margin-right: 10px;
+                font-size: 12px;
+            }
+            .author-name {
+               display: block;
+               line-height: 1.1;
+               font-size: 14px;
+            }
+        }
+        //评论文字
+        .comment-content {
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+        //评论页脚
+        .comment-footer {
+            margin-bottom: 10px;
+            a{
+                margin-left: 14px;
+                font-size: $font-size-small;
+            }
+        }
+
+        //回复
+        .reply-list {
+            padding-bottom: 30px;
+            margin-top: 10px;
+            border-top: {
+                width:1px;
+                style: dashed;
+            };
+        }
+        form.new-reply {
+            //margin-top: 10px;
+            margin-bottom: 30px;
+            //回复框
+            .comment-text {
+                margin-top: -1px;
+                border-radius: 0;
+            }
+        }
+        //回复item
+        @at-root .reply-item{
+            padding: 15px 0 15px 10px;
+            border-bottom: {
+                width:1px;
+                style:dashed;
+            };
+            border-left:{
+                width:3px;
+                style:solid;
+            };
+            font-size: 13px;
+            .reply-footer{
+                @extend .comment-footer;
+                .reply-time{
+                    font-size: $font-size-small;
+                }
+            }
+        }
+
+    }
+
+
+    //大评论框
+    .comment-text {
+        padding: 10px;
+        margin-top: 30px;
+        border: {
+          width:1px;
+          style: solid;
+        };
+        border-radius: 4px;
+        textarea {
+            width: 100%;
+            height: 78px;
+            padding: 0;
+            margin: 0;
+            border: none;
+            resize: none;
+            overflow: auto;
+            outline: none;
+            @include box-shadow(none);
+        }
+    }
+
+    //未登录时,显示登录按钮
+    .comment-signin {
+        text-align: center;
+    }
+}
+//上下篇部分
+.prenext{
+    margin-bottom: 40px;
+    @include display-flex;
+    @include flex-wrap(wrap);
+    .next,.prev{
+        display: inline-block; /* non-flexbox browsers */
+        @include flex(1 0);
+        overflow:hidden;  
+        white-space:nowrap;
+        text-overflow:ellipsis; 
+        a{
+            font-size:16px;
+            span{
+                font-size: 14px;
+            }
+        }
+    }
+
+}

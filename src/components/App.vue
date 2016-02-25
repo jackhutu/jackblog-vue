@@ -1,95 +1,48 @@
-<style src="todomvc-app-css/index.css"></style>
-
 <template>
-  <section class="todoapp">
-    <!-- header -->
-    <header class="header">
-      <h1>todos</h1>
-      <input class="new-todo"
-        autofocus
-        autocomplete="off"
-        placeholder="What needs to be done?"
-        @keyup.enter="addTodo">
-    </header>
-    <!-- main section -->
-    <section class="main" v-show="todos.length">
-      <input class="toggle-all"
-        type="checkbox"
-        :checked="allChecked"
-        @change="toggleAll(!allChecked)">
-      <ul class="todo-list">
-        <todo v-for="todo in filteredTodos" :todo="todo"></todo>
-      </ul>
-    </section>
-    <!-- footer -->
-    <footer class="footer" v-show="todos.length">
-      <span class="todo-count">
-        <strong>{{ remaining }}</strong>
-        {{ remaining | pluralize 'item' }} left
-      </span>
-      <ul class="filters">
-        <li v-for="(key, val) in filters">
-          <a href="#/{{$key}}"
-            :class="{ selected: visibility === key }"
-            @click="visibility = key">
-            {{ key | capitalize }}
-          </a>
-        </li>
-      </ul>
-      <button class="clear-completed"
-        v-show="todos.length > remaining"
-        @click="clearCompleted">
-        Clear completed 
-      </button>
-    </footer>
-  </section>
+  <div class="top-box">
+    <Navbar></Navbar>
+    <router-view></router-view>
+    <vue-toastr v-ref:toastr></vue-toastr>
+  </div>
 </template>
 
 <script>
-import Todo from './Todo.vue'
-
-const filters = {
-  all: (todos) => todos,
-  active: (todos) => todos.filter(todo => !todo.done),
-  completed: (todos) => todos.filter(todo => todo.done)
-}
+import Navbar from './Navbar.vue'
+import vueToastr from 'vue-toastr'
+// import store from '../../store'
+// const { getSnsLogins,getCaptchaUrl,localLogin } = store.actions
 
 export default {
-  components: { Todo },
-  data () {
-    return {
-      visibility: 'all',
-      filters: filters
+  components: { Navbar,vueToastr },
+  methods:{
+    showToastr(content,type='error',position='toast-top-right'){
+      this.$refs.toastr.Add({
+        msg: content,
+        title: "",
+        clickClose: true,
+        timeout: 3000,
+        type: type,
+        position: position
+      })
     }
   },
-  computed: {
-    todos () {
-      return this.$store.state.todos
-    },
-    allChecked () {
-      return this.todos.every(todo => todo.done)
-    },
-    filteredTodos () {
-      return filters[this.visibility](this.todos)
-    },
-    remaining () {
-      return this.todos.filter(todo => !todo.done).length
-    }
-  },
-  methods: {
-    addTodo (e) {
-      var text = e.target.value
-      if (text.trim()) {
-        this.$store.actions.addTodo(text)
-      }
-      e.target.value = ''
-    },
-    toggleAll () {
-      this.$store.actions.toggleAll()
-    },
-    clearCompleted () {
-      this.$store.actions.clearCompleted()
-    }
-  }
+  // created (){
+  // 	console.log('created');
+  // },
+  // beforeCompile(){
+  // 	console.log('beforeComplie');
+  // },
+  // compiled(){
+  // 	console.log('compiled');
+  // },
+  // ready(){
+  // 	console.log('ready');
+  // },
+  // beforeDestory(){
+  // 	console.log('beforeDestory');
+  // },
+  // destroyed(){
+  // 	console.log('destroyed');
+  // }
 }
 </script>

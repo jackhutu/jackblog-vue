@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    vendor: ['react','redux','react-redux','react-router'],
+    vendor: ['vue','vuex','vue-router'],
     bundle: './src/index'
   },
   output: {
@@ -31,7 +31,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       favicon:'./src/favicon.ico',
       title: "JackHu's blog",
-      template: path.join(__dirname,'src/template.html'),  //模板文件
+      template: path.join(__dirname,'src/index.html'),  //模板文件
       inject:'body',
       hash:false,    //为静态资源生成hash值
       minify:{    //压缩HTML文件
@@ -41,12 +41,16 @@ module.exports = {
     }),
   ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: [ 'babel' ],
-      exclude: /node_modules/,
-      include: path.join(__dirname,'src')
+    loaders: [
+    {
+      test: /\.vue$/,
+      loader: 'vue'
     }, 
+    {
+      test: /\.js$/,
+      loader: 'babel',
+      exclude: /node_modules|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/
+    },
     { test: /\.(css|scss)$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader?sourceMap&includePaths[]=' + path.resolve(__dirname, "./node_modules/compass-mixins/lib") ) },
     {
       test: /\.(jpe?g|png|gif)$/i,

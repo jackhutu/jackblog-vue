@@ -9,14 +9,16 @@ import gulpSequence from 'gulp-sequence'
 import nodemon from 'gulp-nodemon'
 import open from 'open'
 
-const DEV_PORT = 5000,PROD_PORT = 8300
+const DEV_PORT = 5200,PROD_PORT = 8400
 gulp.task('serve', cb =>{
   let webpackConfig = require('./webpack.config')
   let myConfig = Object.create(webpackConfig)
+  myConfig.entry.unshift('webpack-dev-server/client?http://localhost:' + DEV_PORT)
   new WebpackDevServer(webpack(myConfig), {
-      noInfo: true,
+      noInfo: false,
       hot: true,
       inline: true,
+      historyApiFallback: true,
       publicPath: myConfig.output.publicPath,
       stats: {
         colors: true
@@ -51,7 +53,6 @@ gulp.task('webpack', cb => {
 })
 
 gulp.task('webpack:dist',gulpSequence('set-env-prod','webpack'))
-
 
 gulp.task('build', gulpSequence('clean','webpack:dist'))
 

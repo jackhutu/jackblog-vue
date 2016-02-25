@@ -6,14 +6,13 @@ module.exports = {
   devtool: 'eval-source-map',
   debug:true,
   entry: [
-    'webpack-dev-server/client?http://localhost:5000',
     'webpack/hot/only-dev-server',
-    './src/main'
+    './src/index'
   ],
   output: {
     path: process.cwd(),
     filename: 'bundle.js',
-    publicPath: '/'
+    //publicPath: '/'
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -26,15 +25,16 @@ module.exports = {
     })
   ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loader: 'babel',
-      exclude: /node_modules|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/
-    },
+    loaders: [
     {
       test: /\.vue$/,
       loader: 'vue'
-    },  
+    }, 
+    {
+      test: /\.js$/,
+      loader: 'babel',
+      exclude: /node_modules|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/
+    }, 
     { 
       test: /\.css$/, loader: 'style!css'
     },{

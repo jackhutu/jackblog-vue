@@ -1,0 +1,192 @@
+/* navbar,sidebar,footer and other component */
+//navbar 结构
+.navbar-box{
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1000;
+	width: 100%;
+	height:$navbarSize;
+	@media (min-width: $screen-sm-min) {
+		width: $navbarSize;
+		height: 100%;
+	}
+	//菜单
+	.navbar-menu{
+		position: relative;
+		left:0;
+		top:0;
+	}
+	//小屏幕收缩工具栏
+	.navbar-shrink{
+		display: block !important;
+		@media (min-width: $screen-sm-min){
+			display: none !important;
+		}
+	}
+	//大屏幕展开工具栏,默认隐藏
+	.navbar-expanded{
+		display: none !important;
+		@media (min-width: $screen-sm-min){
+			display: block !important;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			padding-bottom: 5px;
+		}
+	}
+}
+//样式
+.navbar-skin{
+  @media (min-width: $screen-sm-min){
+		background: $navBgColor;
+		box-shadow: none;
+  }
+  .navbar-item{
+  	display: block;
+  	text-align: center;
+  	padding: 10px;
+  }
+	//缩小屏幕样式
+	@at-root .navbar-shrink{
+		.navbar-item{
+			width: $navbarSize;
+			height: $navbarSize;
+		}
+		a.shrink-avatar{
+			position: relative;
+			top: 3px;
+			right:0;
+			display: inline-block;
+			width: 48px;
+			height: 38px;
+			padding: 0 10px 0 0;
+			margin-right: 10px;
+			img{
+			  width: 100%;
+			  height: 100%;
+			  border: 2px solid transparent;
+			  @include border-radius(50%);
+			  @include box-sizing(border-box);
+			}
+			&:after{
+				content: "";
+				position: absolute;
+				top: 20px;
+				right: 0;
+			  display: inline-block;
+			  width: 0;
+			  height: 0;
+			  vertical-align: top;
+			  border-right: 4px solid transparent;
+			  border-left: 4px solid transparent;
+			}
+		}
+		.shrink-login{
+			position: relative;
+			top: 11px;
+			right: 0;
+			padding: 0 2px;
+			margin-right: 8px;
+		}
+	}
+
+
+	//导航菜单
+	@at-root .navbar-menu{
+		a.navbar-item{
+			float: left;
+			width: $navbarSize;
+			&:hover{
+		    background-color: $navHoverBgColor;
+		    color:white;
+			}
+		}
+		.active{
+			background-color: $navActiveColor;
+      color: white;
+      @include text-shadow(0 1px 0 #de533a);
+		}
+		.logo{
+			font-size: 18px;
+			color: white;
+		}
+		.mobile{
+			padding:5px;
+			font-size: 24px;
+		}
+	}
+	//展开样式
+	@at-root .navbar-expanded{
+		a.navbar-item{
+			&:hover{
+				color:white;
+			}
+		}
+		a.active{
+			color: white;
+		}
+		a.expanded-avatar{
+	    padding:5px;
+	    img{
+	      width: 32px;
+	      height: 32px;
+	      border: 2px solid $navBgColor;
+	      @include border-radius(50%);
+	      @include box-sizing(border-box);
+	    }
+	    &:hover{
+	    	img{
+	    		border-color: $navBdColor;
+	    	}
+	    }
+		}
+		a.expanded-version{
+			padding:10px;
+			img{
+			  width: 22px;
+			  height: 22px;
+			  @include opacity(0.8);
+			}
+			&:hover{
+				img{
+					@include opacity(1);
+				}
+			}
+		}
+	}
+  .tooltip.nav-tooltip .tooltip-inner {
+      min-width: 40px;
+  }
+}
+
+/**********************sidebar***************/
+.sidebar-box{
+  display: none !important;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: $navbarSize;
+  padding: 0;
+  @include box-sizing(border-box);
+  min-height: 100px;
+  @media (min-width: $screen-sm-min){
+  	display: block !important;
+  }
+  .cover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   	background-position: center;
+    @include background-size(cover);
+  }
+  .bottom-block {
+    position: absolute;
+    bottom: 0;
+    padding: 30px;
+    color: white;
+  }
+}
