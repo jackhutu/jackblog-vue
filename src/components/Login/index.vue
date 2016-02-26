@@ -88,6 +88,11 @@ export default {
       }
     }
 	},
+	route: {
+		canActivate:function (transition) {
+			store.state.auth.token?transition.redirect('/'):transition.next()
+		}
+	},
 	computed: {
 		captchaUrl () {
 			return store.state.globalVal.captchaUrl

@@ -42,6 +42,11 @@ export default {
 			nickname: store.state.auth.user.nickname || ''
 		}
 	},
+	route: {
+		canActivate:function (transition) {
+			!store.state.auth.token?transition.redirect('/'):transition.next()
+		}
+	},
 	validators: { 
 	  nickname: function (val) {
 	    return /^[(\u4e00-\u9fa5)0-9a-zA-Z\_\s@]+$/.test(val)
