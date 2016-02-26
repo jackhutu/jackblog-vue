@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './components/App.vue'
 import VueRouter from 'vue-router'
-import VueResource from 'vue-resource'
 import VueValidator from 'vue-validator'
 import configRouter from './routes'
 import filters from './utils/filters'
@@ -10,7 +9,6 @@ import './assets/styles/index.scss'
 import 'vue-toastr/dist/vue-toastr.css'
 
 Vue.use(VueRouter)
-Vue.use(VueResource)
 Vue.use(VueValidator)
 Vue.config.warnExpressionErrors = false
 Object.keys(filters).forEach(k => Vue.filter(k, filters[k]))
