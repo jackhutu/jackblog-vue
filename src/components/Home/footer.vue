@@ -6,7 +6,7 @@
 	      <span>©2015 / 鄂ICP备15010989号-1</span>
 	    </li>
 	    <li>
-	      <a class="github" href="https://github.com/jackhutu/jackblog-react-redux" target="_blank">
+	      <a class="github" href="https://github.com/jackhutu/jackblog-vue" target="_blank">
 	        <i class="fa fa-github"></i>
 	      </a>
 	    </li>
