@@ -11,6 +11,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[hash:8].[name].js',
+    publicPath: '/'
   },
   plugins: [
     new webpack.DefinePlugin({
