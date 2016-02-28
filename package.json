@@ -1,6 +1,6 @@
 {
   "name": "jackblog-vue",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Jackblog vue 版",
   "scripts": {
     "start": "gulp serve",
