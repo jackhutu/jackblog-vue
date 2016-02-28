@@ -5,6 +5,7 @@
     <Prenext :prenext-article="prenextArticle"></Prenext>
     <Comment :comment-list="commentList.items" :user="user"></Comment>
     <Loginmodal v-ref:modal></Loginmodal>
+    <Scrolltop></Scrolltop>
   </div>
 </template>
 <script>
@@ -15,9 +16,10 @@ import Comment from './comment.vue'
 import Prenext from './prenext.vue'
 import Like from './like.vue'
 import Loginmodal from '../Login/modal.vue'
+import Scrolltop from '../Scrolltop/index.vue'
 
 export default {
-  components: { Content,Like,Prenext,Comment,Loginmodal },
+  components: { Content,Like,Prenext,Comment,Loginmodal,Scrolltop },
   computed: {
     articleDetail(){
       return store.state.articleDetail

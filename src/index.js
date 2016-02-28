@@ -5,7 +5,8 @@ import VueValidator from 'vue-validator'
 import configRouter from './routes'
 import filters from './utils/filters'
 import 'font-awesome/css/font-awesome.css'
-import './assets/styles/index.scss'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'jackblog-sass/dist/index.css'
 import 'vue-toastr/dist/vue-toastr.css'
 
 Vue.use(VueRouter)

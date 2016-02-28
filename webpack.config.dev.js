@@ -1,6 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -21,7 +22,8 @@ module.exports = {
       filename: 'index.html',
       template: 'src/index.html',
       inject: true
-    })
+    }),
+    new ExtractTextPlugin('[hash:8].style.css', { allChunks: true })
   ],
   module: {
     loaders: [
@@ -34,12 +36,9 @@ module.exports = {
       loader: 'babel',
       exclude: /node_modules|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/
     }, 
-    { 
-      test: /\.css$/, loader: 'style!css'
-    },{
-      test: /\.scss$/,
-      loader: "style!css?sourceMap!sass?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
-    },{
+    { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap' ) },
+    //{ test: /\.scss$/,loader: "style!css?sourceMap!sass?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")},
+    {
       test: /\.(jpe?g|png|gif)$/i,
       loaders: [
         'url?limit=10000&name=images/[hash:8].[name].[ext]',

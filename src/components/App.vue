@@ -9,8 +9,6 @@
 <script>
 import Navbar from './Navbar.vue'
 import vueToastr from 'vue-toastr'
-// import store from '../../store'
-// const { getSnsLogins,getCaptchaUrl,localLogin } = store.actions
 
 export default {
   components: { Navbar,vueToastr },
@@ -25,24 +23,6 @@ export default {
         position: position
       })
     }
-  },
-  // created (){
-  // 	console.log('created');
-  // },
-  // beforeCompile(){
-  // 	console.log('beforeComplie');
-  // },
-  // compiled(){
-  // 	console.log('compiled');
-  // },
-  // ready(){
-  // 	console.log('ready');
-  // },
-  // beforeDestory(){
-  // 	console.log('beforeDestory');
-  // },
-  // destroyed(){
-  // 	console.log('destroyed');
-  // }
+  }
 }
 </script>
