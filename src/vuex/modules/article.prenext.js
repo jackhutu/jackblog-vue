@@ -1,4 +1,4 @@
-import { PRENEXT_ARTICLE } from '../mutation-types'
+import { PRENEXT_ARTICLE } from '../types'
 
 const state = {
 	next:{},

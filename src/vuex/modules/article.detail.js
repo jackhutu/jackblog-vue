@@ -1,7 +1,7 @@
 import {
 	ARTICLE_DETAIL,
 	TOGGLE_LIKE,
-} from '../mutation-types'
+} from '../types'
 
 const state = {
 	item:{}

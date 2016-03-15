@@ -11,6 +11,9 @@
 
 		  <div class="navbar-expanded">
 		      <div>
+			      <a class="navbar-item expanded-version" href="http://angular2.jackhu.top" title="Angular2.x">
+			        <img src='http://upload.jackhu.top/icons/angular2.png-32x32' /> 
+			      </a>
 			      <a class="navbar-item expanded-version" href="http://vue.jackhu.top" title="Vue">
 			      	<img src='http://upload.jackhu.top/icons/vue.png-32x32' /> 
 			      </a>
@@ -86,12 +89,17 @@
 			  		<img src='http://upload.jackhu.top/icons/vue.png-16x16' /> 
 			  	</a>
 		  	</div>
+		  	<div class="pull-right">
+		  	  <a class="navbar-item expanded-version" href="http://angular2.jackhu.top" title="Agnular2.x">
+		  	    <img src='http://upload.jackhu.top/icons/angular2.png-16x16' /> 
+		  	  </a>
+		  	</div>
 		  </div>
 		</div>
 </template>
 
 <script>
-import { changeStyleMode,logout,getUserInfo } from '../store/actions'
+import { changeStyleMode,logout,getUserInfo } from '../vuex/actions'
 import defaultAvatar from '../assets/images/avatar.png'
 import { dropdown } from 'vue-strap'
 

@@ -1,6 +1,6 @@
 import {
 	CHANGE_OPTIONS
-} from '../mutation-types'
+} from '../types'
 
 const state = {item: {currentPage: 1, itemsPerPage: 10,sortName:'publish_time',tagId: ''}}
 

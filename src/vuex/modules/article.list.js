@@ -3,7 +3,7 @@ import {
 	ADD_ARTICLE_LIST,
 	REQUEST_ARTICLE_LIST,
 	GET_ARTICLE_LIST_FAILURE
-} from '../mutation-types'
+} from '../types'
 
 const state = {
 	isFetching: false,

@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { updateUser,getUserInfo } from '../../store/actions'
+import { updateUser,getUserInfo } from '../../vuex/actions'
 
 export default {
 	el(){
@@ -40,8 +40,7 @@ export default {
 	vuex:{
 		getters:{
 			nickname: ({auth}) => auth.user.nickname,
-			auth: state => state.auth,
-			errMsg: ({auth}) => auth.errMsg
+			auth: state => state.auth
 		},
 		actions:{
 			updateUser,getUserInfo
@@ -62,18 +61,6 @@ export default {
 	    return /^[(\u4e00-\u9fa5)0-9a-zA-Z\_\s@]+$/.test(val)
 	  }
 	},
-	// watch:{
-	// 	'auth':{
-	// 		handler: function (val, oldVal) {
-	// 			if(val.errMsg){
-	// 				this.$root.showToastr(val.errMsg)
-	// 			}else if(val.user.nickname !== oldVal.user.nickname){
-	// 				this.$root.showToastr('修改成功.','success')
-	// 	    }
-	// 		 },
-	// 		deep: true
-	// 	}
-	// },
 	methods:{
 		updateNickname(e){
 			this.newNickname = e.target.value

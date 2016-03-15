@@ -15,7 +15,7 @@
 
 <script>
 	import snsloginbtns from './snsLogin'
-	import { getSnsLogins } from '../../store/actions'
+	import { getSnsLogins } from '../../vuex/actions'
 	import { modal } from 'vue-strap'
 
 	export default {

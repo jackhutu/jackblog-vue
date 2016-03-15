@@ -20,8 +20,9 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'src/index.html',
+      favicon:path.join(__dirname,'src/favicon.ico'),
+      title: "JackHu's blog vue版",
+      template: path.join(__dirname,'src/index.html'),
       inject: true
     }),
     new ExtractTextPlugin('[hash:8].style.css', { allChunks: true })

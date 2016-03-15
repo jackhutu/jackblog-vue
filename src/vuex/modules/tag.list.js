@@ -1,7 +1,7 @@
 import {
 	GET_TAG_LIST_SUCCESS,
 	GET_TAG_LIST_FAILURE
-} from '../mutation-types'
+} from '../types'
 
 const state = {
 	items:[]
