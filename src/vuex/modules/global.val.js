@@ -3,7 +3,7 @@ import {
 	CHANGE_STYLE_MODE,
 	GET_INDEX_IMG,
 	GET_CAPTCHAURL
-} from '../mutation-types'
+} from '../types'
 
 const state = {
 	indexImg: '',

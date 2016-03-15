@@ -1,7 +1,15 @@
 import api from '../api'
-import * as types from './mutation-types'
+import * as types from './types'
 import { saveCookie,getCookie,signOut } from '../utils/authService'
 import img from '../assets/images/shanghai.jpg'
+
+export const showMsg = ({dispatch}, content,type='error') => {
+  dispatch(types.SHOW_MSG, {content:content,type:type})
+}
+
+export const hideMsg = ({dispatch}) => {
+  dispatch(types.HIDE_MSG)
+}
 
 export const changeStyleMode = ({dispatch}) => {
 	dispatch(types.CHANGE_STYLE_MODE)
@@ -42,14 +50,18 @@ export const getSnsLogins = ({ dispatch }) => {
 export const localLogin = (store, userInfo) => {
   api.localLogin(userInfo).then(response => {
     if(!response.ok){
-      return store.dispatch(types.LOGIN_FAILURE,{errMsg: response.data.error_msg || '登录失败'})
+      getCaptchaUrl(store)
+      return showMsg(store,response.data.error_msg || '登录失败')
     }
     const token = response.data.token
     saveCookie('token',token)
     getUserInfo(store)
     store.dispatch(types.LOGIN_SUCCESS, {token: token })
+    showMsg(store,'登录成功,欢迎光临!','success')
+    store.router.go({path:'/'})
   }, response => {
-    store.dispatch(types.LOGIN_FAILURE, {errMsg: response.data.error_msg || '登录失败'})
+    getCaptchaUrl(store)
+    showMsg(store,response.data.error_msg || '登录失败')
   })
 }
 export const getUserInfo = ({ dispatch }) => {
@@ -63,14 +75,15 @@ export const getUserInfo = ({ dispatch }) => {
   })
 }
 
-export const updateUser = ({ dispatch },userInfo) => {
+export const updateUser = (store,userInfo) => {
   api.mdUser(userInfo).then(response => {
     if(!response.ok){
-      return dispatch(types.UPDATE_USER_FAILURE, { errMsg: response.data.error_msg || '更新用户资料失败'})
+      return showMsg(store,'更新用户资料失败!')
     }
-    dispatch(types.UPDATE_USER_SUCCESS, { user: response.data.data })
+    store.dispatch(types.UPDATE_USER_SUCCESS, { user: response.data.data })
+    showMsg(store,'更新资料成功!','success')
   }, response => {
-    dispatch(types.UPDATE_USER_FAILURE,{ errMsg: response.data.error_msg || '更新用户资料失败'})
+    showMsg(store,'更新用户资料失败!')
   })
 }
 
@@ -169,25 +182,27 @@ export const getCommentList = ({ dispatch },id) => {
 }
 
 //addComment
-export const addComment = ({ dispatch },data) => {
+export const addComment = (store,data) => {
   api.addNewComment(data).then(response => {
     if(!response.ok){
-      return dispatch(types.FAILURE_ADD_COMMENT, { errMsg: response.data.error_msg || '添加评论失败'})
+      return showMsg(store,response.data.error_msg || '添加评论失败!')
     }
-    dispatch(types.SUCCESS_ADD_COMMENT, { comment: response.data.data })
+    showMsg(store,'添加评论成功!','success')
+    store.dispatch(types.SUCCESS_ADD_COMMENT, { comment: response.data.data })
   }, response => {
-    dispatch(types.FAILURE_ADD_COMMENT, { errMsg: response.data.error_msg || '添加评论失败'})
+    showMsg(store,response.data.error_msg || '添加评论失败!')
   })
 }
 
-export const addReply = ({ dispatch },cid,data) => {
+export const addReply = (store,cid,data) => {
   api.addNewReply(cid,data).then(response => {
     if(!response.ok){
-      return dispatch(types.FAILURE_ADD_REPLY, { errMsg: response.data.error_msg || '添加回复失败'})
+      return showMsg(store,response.data.error_msg || '添加回复失败!')
     }
-    dispatch(types.SUCCESS_ADD_REPLY, { cid:cid,replys: response.data.data })
+    showMsg(store,'添加回复成功!','success')
+    store.dispatch(types.SUCCESS_ADD_REPLY, { cid:cid,replys: response.data.data })
   }, response => {
-    dispatch(types.FAILURE_ADD_REPLY, { errMsg: response.data.error_msg || '添加回复失败'})
+    showMsg(store,response.data.error_msg || '添加回复失败!')
   })
 }
 

@@ -17,7 +17,7 @@ import Tags from './tags.vue'
 import Articles from './articles.vue'
 import Loadmore from './loadmore.vue'
 import Footerbar from './footer.vue'
-import { getIndexImage,getTagList,changeOptions,getArticleList } from '../../store/actions'
+import { getIndexImage,getTagList,changeOptions,getArticleList } from '../../vuex/actions'
 
 export default {
 	components:{ Sidebar,Tags,Articles,Loadmore,Footerbar },

@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { getSnsLogins,getCaptchaUrl,localLogin } from '../../store/actions'
+import { getSnsLogins,getCaptchaUrl,localLogin } from '../../vuex/actions'
 import snsloginbtns from './snsLogin'
 
 export default {
@@ -77,7 +77,7 @@ export default {
 		getters:{
 			captchaUrl: ({globalVal}) => globalVal.captchaUrl,
 			logins: ({logins}) => logins.items,
-			auth: state => state.auth
+			token: ({auth}) => auth.token
 		},
 		actions:{
 			getSnsLogins,getCaptchaUrl,localLogin
@@ -99,26 +99,12 @@ export default {
 	},
 	route: {
 		activate:function (transition) {
-			this.auth.token?transition.redirect('/'):transition.next()
+			this.token?transition.redirect('/'):transition.next()
 		}
 	},
 	created () {
 		this.getCaptchaUrl()
 	  this.getSnsLogins()
-	},
-	watch:{
-		'auth':{
-			handler: function (val, oldVal) { 
-				if(val.errMsg){
-					this.getCaptchaUrl()
-					this.$root.showToastr(val.errMsg)
-				}
-				if(val.user && val.token){
-					this.$route.router.go('/')
-				}
-			 },
-			deep: true
-		}
 	},
 	methods: {
 		login(signinValidation){

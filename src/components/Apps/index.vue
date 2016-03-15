@@ -29,7 +29,7 @@
 </div>
 </template>
 <script>
-import { getApps } from '../../store/actions'
+import { getApps } from '../../vuex/actions'
 
 export default {
   vuex:{

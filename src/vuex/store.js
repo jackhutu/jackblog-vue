@@ -11,6 +11,7 @@ import globalVal from './modules/global.val'
 import options from './modules/options'
 import logins from './modules/logins'
 import tagList from './modules/tag.list'
+import showmsg from './modules/showmsg'
 
 const debug = process.env.NODE_ENV !== 'production'
 Vue.use(Vuex)
@@ -27,7 +28,8 @@ export default new Vuex.Store({
     globalVal,
     options,
     logins,
-    tagList
+    tagList,
+    showmsg
   },
   strict: debug,
   middlewares

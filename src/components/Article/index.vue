@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import { getArticleDetail,getPrenext,getCommentList,toggleLike,addComment,addReply } from '../../store/actions'
+import { getArticleDetail,getPrenext,getCommentList,toggleLike,addComment,addReply } from '../../vuex/actions'
 import Content from './content.vue'
 import Comment from './comment.vue'
 import Prenext from './prenext.vue'

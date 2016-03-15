@@ -1,7 +1,7 @@
 import {
 	SUCCESS_GET_APPS,
 	FAILURE_GET_APPS
-} from '../mutation-types'
+} from '../types'
 
 const state = {
   items:[]

@@ -1,7 +1,7 @@
 import {
 	SUCCESS_GET_SNSLOGINS,
 	FAILURE_GET_SNSLOGINS
-} from '../mutation-types'
+} from '../types'
 
 const state = {items:[]}
 
