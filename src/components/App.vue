@@ -9,14 +9,16 @@
 <script>
 import Navbar from './Navbar.vue'
 import vueToastr from 'vue-toastr'
+import store from '../store'
 
 export default {
+  store,
   components: { Navbar,vueToastr },
   methods:{
     showToastr(content,type='error',position='toast-top-right'){
       this.$refs.toastr.Add({
         msg: content,
-        title: "",
+        title: '',
         clickClose: true,
         timeout: 3000,
         type: type,

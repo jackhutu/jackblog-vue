@@ -3,13 +3,18 @@ import {
 	FAILURE_GET_SNSLOGINS
 } from '../mutation-types'
 
-export const loginsInitialState = []
+const state = {items:[]}
 
-export const loginsMutations = {
+const mutations = {
 	[FAILURE_GET_SNSLOGINS](state){
-		state.logins = loginsInitialState
+		state.items = []
 	},
 	[SUCCESS_GET_SNSLOGINS](state,data){
-		state.logins = data
+		state.items = data
 	}
+}
+
+export default {
+	state,
+	mutations
 }

@@ -2,15 +2,14 @@
   <div class="article-box">
     <Content :article-detail="articleDetail"></Content>
     <Like :like-count="articleDetail.like_count" :is-like="articleDetail.isLike"></Like>
-    <Prenext :prenext-article="prenextArticle"></Prenext>
-    <Comment :comment-list="commentList.items" :user="user"></Comment>
+    <Prenext :prev-article="prevArticle" :next-article="nextArticle"></Prenext>
+    <Comment :comment-list="commentList" :user="user"></Comment>
     <Loginmodal v-ref:modal></Loginmodal>
     <Scrolltop></Scrolltop>
   </div>
 </template>
 <script>
-import store from '../../store'
-const { getArticleDetail,getPrenext,getCommentList,toggleLike,addComment,addReply } = store.actions
+import { getArticleDetail,getPrenext,getCommentList,toggleLike,addComment,addReply } from '../../store/actions'
 import Content from './content.vue'
 import Comment from './comment.vue'
 import Prenext from './prenext.vue'
@@ -20,42 +19,39 @@ import Scrolltop from '../Scrolltop/index.vue'
 
 export default {
   components: { Content,Like,Prenext,Comment,Loginmodal,Scrolltop },
-  computed: {
-    articleDetail(){
-      return store.state.articleDetail
+  vuex:{
+    getters:{
+      articleDetail: ({articleDetail}) => articleDetail.item,
+      user: ({auth}) => auth.user,
+      nextArticle: ({prenextArticle}) => prenextArticle.next,
+      prevArticle: ({prenextArticle}) => prenextArticle.prev,
+      commentList: ({commentList}) => commentList.items,
+      options: ({options}) => options.item,
+      aid: ({route}) => route.params.aid
     },
-    user(){
-      return store.state.auth.user
-    },
-    prenextArticle(){
-      return store.state.prenextArticle
-    },
-    commentList(){
-      return store.state.commentList
-    },
-    options(){
-      return store.state.options
+    actions:{
+      getArticleDetail,getPrenext,getCommentList,toggleLike,addComment,addReply
     }
   },
-  route: {  
+  route:{
     data ({ to: { params: { aid }}}) {
-      getArticleDetail(aid, this.user)
-      getPrenext(aid,this.options)
-      getCommentList(aid)
+      this.getPrenext(aid)
+      this.getCommentList(aid)
+      this.getArticleDetail(aid, this.user)
     }
   },
   methods:{
     openLoginModal(){
       this.$refs.modal.showModal()
     },
-  	toggleLike(){
+  	handleToggleLike(){
       if(this.user){
-        toggleLike(this.$route.params.aid)
+        this.toggleLike(this.$route.params.aid)
       }
   	},
     handleSubmitComment(content){
       if(this.user && content.trim() !== ''){
-        addComment({aid:this.$route.params.aid, content: content})
+        this.addComment({aid:this.$route.params.aid, content: content})
       }else{
         this.openLoginModal()
       }
@@ -63,14 +59,14 @@ export default {
     handleShowReply(content){
       //判断是否登录.未登录则弹出登录框.
       if(this.user && content.trim() !== ''){
-        addComment({aid:this.$route.params.aid, content: content})
+        this.addComment({aid:this.$route.params.aid, content: content})
       }else{
         this.openLoginModal()
       }
     },
     handleSubmitReply(cid,content){
       if(this.user && content.trim() !== ''){
-        addReply(cid,{content:content})
+        this.addReply(cid,{content:content})
       }else{
         this.openLoginModal()
       }

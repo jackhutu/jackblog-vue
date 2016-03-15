@@ -2,10 +2,15 @@ import {
 	CHANGE_OPTIONS
 } from '../mutation-types'
 
-export const optionsInitialState = {currentPage: 1, itemsPerPage: 10,sortName:'publish_time',tagId: ''}
+const state = {item: {currentPage: 1, itemsPerPage: 10,sortName:'publish_time',tagId: ''}}
 
-export const optionsMutations = {
+const mutations = {
 	[CHANGE_OPTIONS](state, action) {
-	 	state.options = {...state.options, ...action.options}
+	 	state.item = {...state.item, ...action.options}
 	}
+}
+
+export default {
+	state,
+	mutations
 }

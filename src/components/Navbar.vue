@@ -91,8 +91,7 @@
 </template>
 
 <script>
-import store from '../store'
-const { changeStyleMode,logout,getUserInfo } = store.actions
+import { changeStyleMode,logout,getUserInfo } from '../store/actions'
 import defaultAvatar from '../assets/images/avatar.png'
 import { dropdown } from 'vue-strap'
 
@@ -100,28 +99,32 @@ export default {
 	components:{
 		dropdown
 	},
+	vuex:{
+		getters:{
+			auth: state => state.auth,
+			styleMode: state => state.globalVal.styleMode
+		},
+		actions:{
+			changeStyleMode,
+			logout,
+			getUserInfo
+		}
+	},
 	computed: {
-		auth () {
-			return store.state.auth
-		},
-		styleMode (){
-			return store.state.globalVal.styleMode
-		},
 		defaultAvatar() {
 			return defaultAvatar
 		}
 	},
 	created (){
 		if(this.auth.token){
-			getUserInfo()
+			this.getUserInfo()
 		}
 	},
 	methods: {
 		changeMode(){
-			changeStyleMode()
-			document.body.className = store.state.globalVal.styleMode
-		},
-		logout
+			this.changeStyleMode()
+			document.body.className = this.styleMode
+		}
 	}
 }
 </script>

@@ -1,9 +1,11 @@
 import Vue from 'vue'
-import App from './components/App.vue'
 import VueRouter from 'vue-router'
 import VueValidator from 'vue-validator'
+import { sync } from 'vuex-router-sync'
+import store from './store'
 import configRouter from './routes'
 import filters from './utils/filters'
+import App from './components/App.vue'
 import 'font-awesome/css/font-awesome.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'jackblog-sass/dist/index.css'
@@ -19,8 +21,8 @@ const router = new VueRouter({
   saveScrollPosition: true,
   suppressTransitionError: true
 })
-
 configRouter(router)
+sync(store, router)
 
 router.start(Vue.extend(App), '#root')
 window.router = router

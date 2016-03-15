@@ -7,35 +7,45 @@ import {
 	UPDATE_USER_SUCCESS,
 	UPDATE_USER_FAILURE
 } from '../mutation-types'
-
 import { saveCookie,getCookie,signOut } from '../../utils/authService'
 
-export const authInitialState = {
+const state = {
 	token: getCookie('token') || null,
 	user: null,
-	errMsg:null
+	errMsg: null
 }
 
-export const authMutations = {
+const mutations = {
 	[LOGIN_SUCCESS](state , action){
-		state.auth = {...state.auth, errMsg: null, token: action.token}
+		state.errMsg = null, 
+		state.token = action.token
 	},
 	[LOGIN_FAILURE](state, action){
-		state.auth = {...state.auth, errMsg: action.errMsg}
+		state.errMsg = action.errMsg
 	},
 	[USERINFO_SUCCESS](state,action){
-		state.auth = {...state.auth, errMsg: null, user: action.user}
+		state.errMsg = null
+		state.user = action.user
 	},
 	[USERINFO_FAILURE](state,action){
-		state.auth = {...state.auth, errMsg: null, user: null}
+		state.errMsg = null
+		state.user = null
 	},
 	[LOGOUT_USER](state,action){
-		state.auth = {...authInitialState, token: null}
+		state.token = getCookie('token') || null
+		state.user = null
+		state.token = null
 	},
 	[UPDATE_USER_FAILURE](state,action){
-		state.auth = {...state.auth, errMsg: action.errMsg}
+		state.errMsg = action.errMsg
 	},
 	[UPDATE_USER_SUCCESS](state,action){
-		state.auth = {...state.auth, user:action.user,errMsg:null}
+		state.user = action.user
+		state.errMsg = null
 	}
+}
+
+export default {
+	state,
+	mutations
 }

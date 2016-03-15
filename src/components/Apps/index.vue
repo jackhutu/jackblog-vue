@@ -29,19 +29,21 @@
 </div>
 </template>
 <script>
-import store from '../../store'
-const { getApps } = store.actions
+import { getApps } from '../../store/actions'
 
 export default {
-  route:{
-    activate ({ next }) {
-      getApps()
-      next()
+  vuex:{
+    getters:{
+      apps: ({apps}) => apps.items
+    },
+    actions:{
+      getApps
     }
   },
-  computed:{
-    apps(){
-      return store.state.apps
+  route:{
+    activate ({ next }) {
+      this.getApps()
+      next()
     }
   }
 }

@@ -3,13 +3,20 @@ import {
 	GET_TAG_LIST_FAILURE
 } from '../mutation-types'
 
-export const tagsInitialState = []
+const state = {
+	items:[]
+}
 
-export const tagsMutations = {
+const mutations = {
 	[GET_TAG_LIST_FAILURE](state){
-		state.tagList = tagsInitialState
+		state.items = []
 	},
 	[GET_TAG_LIST_SUCCESS](state,action){
-		state.tagList = action.tagList
+		state.items = action.tagList
 	}
+}
+
+export default {
+	state,
+	mutations
 }

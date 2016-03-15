@@ -13,7 +13,7 @@ export default {
   props:['likeCount','isLike'],
   methods:{
   	toggleLike(){
-      this.$parent.toggleLike()
+      this.$parent.handleToggleLike()
   	}
   }
 }

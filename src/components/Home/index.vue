@@ -3,9 +3,9 @@
 	  <div class="row">
 	    <Sidebar :index-img="indexImg"></Sidebar>
 	    <div class="col-sm-7 col-sm-offset-3 main-content">
-				<Tags :tag-list="tagList" :options="options" :is-fetching="articleList.isFetching"></Tags>
-        <Articles :article-list="articleList.items"></Articles>
-        <Loadmore v-if="articleList.items.length > 0 && articleList.isMore" :options="options" :is-more="articleList.isMore" :is-fetching="articleList.isFetching"></Loadmore>
+				<Tags :tag-list="tagList" :options="options" :is-fetching="isFetching"></Tags>
+        <Articles :article-list="articleList"></Articles>
+        <Loadmore v-if="articleList.length > 0 && isMore" :options="options" :is-more="isMore" :is-fetching="isFetching"></Loadmore>
 	    </div>
 	  </div>
 	</div>
@@ -17,40 +17,41 @@ import Tags from './tags.vue'
 import Articles from './articles.vue'
 import Loadmore from './loadmore.vue'
 import Footerbar from './footer.vue'
-import store from '../../store'
-const { getIndexImage,getTagList,changeOptions,getArticleList } = store.actions
+import { getIndexImage,getTagList,changeOptions,getArticleList } from '../../store/actions'
 
 export default {
 	components:{ Sidebar,Tags,Articles,Loadmore,Footerbar },
-  created(){
-    if(this.indexImg === ''){
-      getIndexImage()
-    }
-    if(this.tagList.length < 1){
-      getTagList()
-    }
-    if(this.articleList.items.length < 1){
-      getArticleList(this.options)
+  vuex:{
+    getters:{
+      indexImg: ({globalVal}) => globalVal.indexImg,
+      tagList: ({tagList}) => tagList.items,
+      options: ({options}) => options.item,
+      articleList: ({articleList}) => articleList.items,
+      isMore: ({articleList}) => articleList.isMore,
+      isFetching: ({articleList}) => articleList.isFetching
+    },
+    actions:{
+      getIndexImage,
+      getTagList,
+      changeOptions,
+      getArticleList
     }
   },
-  computed:{
-  	indexImg(){
-  		return store.state.globalVal.indexImg
-  	},
-  	tagList(){
-  		return store.state.tagList
-  	},
-  	options(){
-  		return store.state.options
-  	},
-    articleList(){
-      return store.state.articleList
+  created(){
+    if(this.indexImg === ''){
+      this.getIndexImage()
+    }
+    if(this.tagList.length < 1){
+      this.getTagList()
+    }
+    if(this.articleList.length < 1){
+      this.getArticleList(this.options)
     }
   },
   methods:{
   	handleChange(options,isAdd=false){
-      changeOptions(options)
-      getArticleList(store.state.options,isAdd)
+      this.changeOptions(options)
+      this.getArticleList(this.options,isAdd)
   	}
   }
 }

@@ -3,13 +3,20 @@ import {
 	FAILURE_GET_APPS
 } from '../mutation-types'
 
-export const appsInitialState = []
+const state = {
+  items:[]
+}
 
-export const appsMutations = {
-  [FAILURE_GET_APPS]({apps}){
-  	apps = appsInitialState
+const mutations = {
+  [FAILURE_GET_APPS](state){
+  	state.items = []
   },
   [SUCCESS_GET_APPS](state,action){
-  	state.apps = action.apps
+  	state.items = action.apps
   }
+}
+
+export default {
+	state,
+	mutations
 }

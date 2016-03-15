@@ -13,7 +13,8 @@
 		        		<input 
 		        			placeholder="2-15字符，中英文、数字和下划线" 
 		        			type="text" 
-		        			v-model="nickname"
+		        			:value="nickname"
+		        			@input="updateNickname"
 		        			v-validate:nickname="{ required: true, minlength: 2, maxlength: 15, nickname:true }"
 		        			class="form-control"
 		        			v-bind:class="[$settingsValidation.nickname.invalid ? 'ng-invalid' : 'ng-valid', $settingsValidation.nickname.dirty ? 'ng-dirty' : '']" >
@@ -30,48 +31,57 @@
 </template>
 
 <script>
-import store from '../../store'
-const { updateUser } = store.actions
+import { updateUser,getUserInfo } from '../../store/actions'
 
 export default {
 	el(){
 		return "settingsForm"
 	},
-	data(){
-		return {
-			nickname: store.state.auth.user.nickname || ''
+	vuex:{
+		getters:{
+			nickname: ({auth}) => auth.user.nickname,
+			auth: state => state.auth,
+			errMsg: ({auth}) => auth.errMsg
+		},
+		actions:{
+			updateUser,getUserInfo
 		}
 	},
-	route: {
-		canActivate:function (transition) {
-			!store.state.auth.token?transition.redirect('/'):transition.next()
+	data(){
+		return {
+			newNickname: ''
 		}
+	},
+	route:{
+	  activate ({ next }) {
+	  	!this.auth.token?transition.redirect('/'):transition.next()
+	  }
 	},
 	validators: { 
 	  nickname: function (val) {
 	    return /^[(\u4e00-\u9fa5)0-9a-zA-Z\_\s@]+$/.test(val)
 	  }
 	},
-	computed: {
-		auth(){
-			return store.state.auth
-		}
-	},
-	watch:{
-		'auth':{
-			handler: function (val, oldVal) { 
-				if(val.errMsg){
-					this.$root.showToastr(val.errMsg)
-				}else if(val.user.nickname !== oldVal.user.nickname){
-					this.$root.showToastr('修改成功.','success')
-		    }
-			 },
-			deep: true
-		}
-	},
+	// watch:{
+	// 	'auth':{
+	// 		handler: function (val, oldVal) {
+	// 			if(val.errMsg){
+	// 				this.$root.showToastr(val.errMsg)
+	// 			}else if(val.user.nickname !== oldVal.user.nickname){
+	// 				this.$root.showToastr('修改成功.','success')
+	// 	    }
+	// 		 },
+	// 		deep: true
+	// 	}
+	// },
 	methods:{
+		updateNickname(e){
+			this.newNickname = e.target.value
+		},
 		mdUser(){
-			updateUser({ nickname: this.nickname })
+			if(this.newNickname){
+				this.updateUser({ nickname: this.newNickname })
+			}
 		}
 	}
 }

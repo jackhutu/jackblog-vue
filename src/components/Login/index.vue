@@ -40,7 +40,7 @@
 		          			placeholder="验证码" />
 		          	</div>
 		          	<div class="col-xs-6 captcha-img">
-		          		<a href="javascript:;" @click.prevent="changeCaptcha()">
+		          		<a href="javascript:;" @click.prevent="getCaptchaUrl()">
 		          			<img :src="captchaUrl" />
 		          		</a>
 		          	</div>
@@ -63,21 +63,30 @@
 </template>
 
 <script>
-import store from '../../store'
-const { getSnsLogins,getCaptchaUrl,localLogin } = store.actions
+import { getSnsLogins,getCaptchaUrl,localLogin } from '../../store/actions'
 import snsloginbtns from './snsLogin'
 
 export default {
 	el (){
 		return '#signinForm'
 	},
+	components:{
+		snsloginbtns
+	},
+	vuex:{
+		getters:{
+			captchaUrl: ({globalVal}) => globalVal.captchaUrl,
+			logins: ({logins}) => logins.items,
+			auth: state => state.auth
+		},
+		actions:{
+			getSnsLogins,getCaptchaUrl,localLogin
+		}
+	},
 	validators: { 
 	  email: function (val) {
 	    return /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/.test(val)
 	  }
-	},
-	components:{
-		snsloginbtns
 	},
 	data (){
     return {
@@ -89,28 +98,19 @@ export default {
     }
 	},
 	route: {
-		canActivate:function (transition) {
-			store.state.auth.token?transition.redirect('/'):transition.next()
-		}
-	},
-	computed: {
-		captchaUrl () {
-			return store.state.globalVal.captchaUrl
-		},
-		logins (){
-			return store.state.logins
-		},
-		auth(){
-			return store.state.auth
+		activate:function (transition) {
+			this.auth.token?transition.redirect('/'):transition.next()
 		}
 	},
 	created () {
-	  getSnsLogins()
+		this.getCaptchaUrl()
+	  this.getSnsLogins()
 	},
 	watch:{
 		'auth':{
 			handler: function (val, oldVal) { 
 				if(val.errMsg){
+					this.getCaptchaUrl()
 					this.$root.showToastr(val.errMsg)
 				}
 				if(val.user && val.token){
@@ -123,11 +123,8 @@ export default {
 	methods: {
 		login(signinValidation){
 			if(signinValidation.valid){
-				localLogin(this.user)
+				this.localLogin(this.user)
 			}
-		},
-		changeCaptcha(){
-			getCaptchaUrl()
 		}
 	}
 }

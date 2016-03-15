@@ -22,8 +22,9 @@ export const getIndexImage = ({dispatch}) => {
   })
 }
 
-export const logout = ({dispatch}) => {
+export const logout = ({dispatch, router}) => {
 	signOut()
+  router.go({path:'/'})
 	dispatch(types.LOGOUT_USER)
 }
 
@@ -45,7 +46,7 @@ export const localLogin = (store, userInfo) => {
     }
     const token = response.data.token
     saveCookie('token',token)
-    store.actions.getUserInfo()
+    getUserInfo(store)
     store.dispatch(types.LOGIN_SUCCESS, {token: token })
   }, response => {
     store.dispatch(types.LOGIN_FAILURE, {errMsg: response.data.error_msg || '登录失败'})
@@ -134,8 +135,8 @@ export const getArticleDetail = ({ dispatch }, id, user) => {
   })
 }
 //getPrenext
-export const getPrenext = ({ dispatch }, id, options) => {
-  api.getPrenext(id,options).then(response => {
+export const getPrenext = ({ dispatch,state }, id) => {
+  api.getPrenext(id,state.options.item).then(response => {
     if(response.ok){
       dispatch(types.PRENEXT_ARTICLE, { prenextArticle: response.data.data })
     }

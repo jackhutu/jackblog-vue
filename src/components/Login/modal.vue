@@ -15,8 +15,7 @@
 
 <script>
 	import snsloginbtns from './snsLogin'
-	import store from '../../store'
-	const { getSnsLogins } = store.actions
+	import { getSnsLogins } from '../../store/actions'
 	import { modal } from 'vue-strap'
 
 	export default {
@@ -24,19 +23,22 @@
 			modal,
 			snsloginbtns
 		},
+		vuex:{
+			getters:{
+				logins: ({logins}) => logins.items
+			},
+			actions:{
+				getSnsLogins
+			}
+		},
 		data(){
 			return {
 				showLoginModal:false
 			}
 		},
-		computed: {
-			logins (){
-				return store.state.logins
-			}
-		},
 		created () {
 			if(this.logins.length < 1){
-				getSnsLogins()
+				this.getSnsLogins()
 			}
 		},
 		methods: {
