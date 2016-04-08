@@ -1,6 +1,8 @@
+'use strict'
+
 import api from '../api'
 import * as types from './types'
-import { saveCookie,getCookie,signOut } from '../utils/authService'
+import { saveCookie,signOut } from '../utils/authService'
 import img from '../assets/images/shanghai.jpg'
 
 export const showMsg = ({dispatch}, content,type='error') => {
@@ -12,7 +14,7 @@ export const hideMsg = ({dispatch}) => {
 }
 
 export const changeStyleMode = ({dispatch}) => {
-	dispatch(types.CHANGE_STYLE_MODE)
+  dispatch(types.CHANGE_STYLE_MODE)
 }
 
 export const getCaptchaUrl = ({dispatch}) => {
@@ -31,19 +33,19 @@ export const getIndexImage = ({dispatch}) => {
 }
 
 export const logout = ({dispatch, router}) => {
-	signOut()
+  signOut()
   router.go({path:'/'})
-	dispatch(types.LOGOUT_USER)
+  dispatch(types.LOGOUT_USER)
 }
 
 export const getSnsLogins = ({ dispatch }) => {
   api.getSnsLogins().then(response => {
-  	if(!response.ok){
-  		return dispatch(types.FAILURE_GET_SNSLOGINS)
-  	}
+    if(!response.ok){
+      return dispatch(types.FAILURE_GET_SNSLOGINS)
+    }
     dispatch(types.SUCCESS_GET_SNSLOGINS, response.data.data)
   }, response => {
-  	dispatch(types.FAILURE_GET_SNSLOGINS)
+    dispatch(types.FAILURE_GET_SNSLOGINS)
   })
 }
 
@@ -138,11 +140,8 @@ export const getArticleDetail = ({ dispatch }, id, user) => {
           }
         })
       }
-      dispatch(types.ARTICLE_DETAIL, { 
-        articleDetail: {
-            ...article,
-            isLike:isLike
-          }
+      dispatch(types.ARTICLE_DETAIL, {
+        articleDetail: {...article,isLike:isLike}
       })
     }
   })

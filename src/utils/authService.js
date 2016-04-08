@@ -1,3 +1,5 @@
+'use strict'
+
 import cookie from 'react-cookie'
 import { CookieDomain } from '../config.js'
 let cookieConfig = {}
@@ -14,11 +16,11 @@ export function getCookie(name) {
 }
 
 export function removeCookie(name) {
-  cookie.remove(name, cookieConfig);
+  cookie.remove(name, cookieConfig)
 }
 
 export function signOut() {
-  cookie.remove('token', cookieConfig);
+  cookie.remove('token', cookieConfig)
 }
 
 export function isLogin() {

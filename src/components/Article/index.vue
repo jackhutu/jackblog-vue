@@ -44,11 +44,11 @@ export default {
     openLoginModal(){
       this.$refs.modal.showModal()
     },
-  	handleToggleLike(){
+    handleToggleLike(){
       if(this.user){
         this.toggleLike(this.$route.params.aid)
       }
-  	},
+    },
     handleSubmitComment(content){
       if(this.user && content.trim() !== ''){
         this.addComment({aid:this.$route.params.aid, content: content})

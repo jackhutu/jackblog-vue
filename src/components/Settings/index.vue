@@ -34,42 +34,42 @@
 import { updateUser,getUserInfo } from '../../vuex/actions'
 
 export default {
-	el(){
-		return "settingsForm"
-	},
-	vuex:{
-		getters:{
-			nickname: ({auth}) => auth.user.nickname,
-			auth: state => state.auth
-		},
-		actions:{
-			updateUser,getUserInfo
-		}
-	},
-	data(){
-		return {
-			newNickname: ''
-		}
-	},
-	route:{
-	  activate ({ next }) {
-	  	!this.auth.token?transition.redirect('/'):transition.next()
-	  }
-	},
-	validators: { 
-	  nickname: function (val) {
-	    return /^[(\u4e00-\u9fa5)0-9a-zA-Z\_\s@]+$/.test(val)
-	  }
-	},
-	methods:{
-		updateNickname(e){
-			this.newNickname = e.target.value
-		},
-		mdUser(){
-			if(this.newNickname){
-				this.updateUser({ nickname: this.newNickname })
-			}
-		}
-	}
+  el(){
+    return 'settingsForm'
+  },
+  vuex:{
+    getters:{
+      nickname: ({auth}) => auth.user.nickname,
+      auth: state => state.auth
+    },
+    actions:{
+      updateUser,getUserInfo
+    }
+  },
+  data(){
+    return {
+      newNickname: ''
+    }
+  },
+  route:{
+    activate (transition) {
+      !this.auth.token?transition.redirect('/'):transition.next()
+    }
+  },
+  validators: { 
+    nickname: function (val) {
+      return /^[(\u4e00-\u9fa5)0-9a-zA-Z\_\s@]+$/.test(val)
+    }
+  },
+  methods:{
+    updateNickname(e){
+      this.newNickname = e.target.value
+    },
+    mdUser(){
+      if(this.newNickname){
+        this.updateUser({ nickname: this.newNickname })
+      }
+    }
+  }
 }
 </script>

@@ -21,9 +21,9 @@ export default {
         this.isShowTop = false
       }
     },
-  	gotop(){
+    gotop(){
       window.scrollTo(0,0)
-  	}
+    }
   }
 }
 </script>

@@ -1,0 +1,39 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "plugins": ["vue"],
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 7,
+    "ecmaFeatures": {
+      "globalReturn": true,
+      "impliedStrict": true,
+      "experimentalObjectRestSpread":true,
+      "jsx": false
+    }
+  },
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "no-unused-vars": ["error", { "vars": "all", "args": "none" }],
+    "no-mixed-spaces-and-tabs": [0, "smart-tabs"]
+  }
+}

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-	export default {
-		props: ['articleList']
-	}
+export default {
+  props: ['articleList']
+}
 </script>

@@ -20,7 +20,7 @@ import Footerbar from './footer.vue'
 import { getIndexImage,getTagList,changeOptions,getArticleList } from '../../vuex/actions'
 
 export default {
-	components:{ Sidebar,Tags,Articles,Loadmore,Footerbar },
+  components:{ Sidebar,Tags,Articles,Loadmore,Footerbar },
   vuex:{
     getters:{
       indexImg: ({globalVal}) => globalVal.indexImg,
@@ -49,10 +49,10 @@ export default {
     }
   },
   methods:{
-  	handleChange(options,isAdd=false){
+    handleChange(options,isAdd=false){
       this.changeOptions(options)
       this.getArticleList(this.options,isAdd)
-  	}
+    }
   }
 }
 </script>

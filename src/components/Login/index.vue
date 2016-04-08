@@ -67,51 +67,51 @@ import { getSnsLogins,getCaptchaUrl,localLogin } from '../../vuex/actions'
 import snsloginbtns from './snsLogin'
 
 export default {
-	el (){
-		return '#signinForm'
-	},
-	components:{
-		snsloginbtns
-	},
-	vuex:{
-		getters:{
-			captchaUrl: ({globalVal}) => globalVal.captchaUrl,
-			logins: ({logins}) => logins.items,
-			token: ({auth}) => auth.token
-		},
-		actions:{
-			getSnsLogins,getCaptchaUrl,localLogin
-		}
-	},
-	validators: { 
-	  email: function (val) {
-	    return /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/.test(val)
-	  }
-	},
-	data (){
+  el (){
+    return '#signinForm'
+  },
+  components:{
+    snsloginbtns
+  },
+  vuex:{
+    getters:{
+      captchaUrl: ({globalVal}) => globalVal.captchaUrl,
+      logins: ({logins}) => logins.items,
+      token: ({auth}) => auth.token
+    },
+    actions:{
+      getSnsLogins,getCaptchaUrl,localLogin
+    }
+  },
+  validators: { 
+    email: function (val) {
+      return /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/.test(val)
+    }
+  },
+  data (){
     return {
       user:{
-      	email:'',
-      	password:'',
-      	captcha:''
+        email:'',
+        password:'',
+        captcha:''
       }
     }
-	},
-	route: {
-		activate:function (transition) {
-			this.token?transition.redirect('/'):transition.next()
-		}
-	},
-	created () {
-		this.getCaptchaUrl()
-	  this.getSnsLogins()
-	},
-	methods: {
-		login(signinValidation){
-			if(signinValidation.valid){
-				this.localLogin(this.user)
-			}
-		}
-	}
+  },
+  route: {
+    activate:function (transition) {
+      this.token?transition.redirect('/'):transition.next()
+    }
+  },
+  created () {
+    this.getCaptchaUrl()
+    this.getSnsLogins()
+  },
+  methods: {
+    login(signinValidation){
+      if(signinValidation.valid){
+        this.localLogin(this.user)
+      }
+    }
+  }
 }
 </script>

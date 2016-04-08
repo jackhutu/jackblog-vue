@@ -14,37 +14,37 @@
 </template>
 
 <script>
-	import snsloginbtns from './snsLogin'
-	import { getSnsLogins } from '../../vuex/actions'
-	import { modal } from 'vue-strap'
+import snsloginbtns from './snsLogin'
+import { getSnsLogins } from '../../vuex/actions'
+import { modal } from 'vue-strap'
 
-	export default {
-		components:{
-			modal,
-			snsloginbtns
-		},
-		vuex:{
-			getters:{
-				logins: ({logins}) => logins.items
-			},
-			actions:{
-				getSnsLogins
-			}
-		},
-		data(){
-			return {
-				showLoginModal:false
-			}
-		},
-		created () {
-			if(this.logins.length < 1){
-				this.getSnsLogins()
-			}
-		},
-		methods: {
-			showModal(){
-				this.showLoginModal = true
-			}
-		}
-	}
+export default {
+  components:{
+    modal,
+    snsloginbtns
+  },
+  vuex:{
+    getters:{
+      logins: ({logins}) => logins.items
+    },
+    actions:{
+      getSnsLogins
+    }
+  },
+  data(){
+    return {
+      showLoginModal:false
+    }
+  },
+  created () {
+    if(this.logins.length < 1){
+      this.getSnsLogins()
+    }
+  },
+  methods: {
+    showModal(){
+      this.showLoginModal = true
+    }
+  }
+}
 </script>

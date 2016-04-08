@@ -1,18 +1,20 @@
+'use strict'
+
 import { PRENEXT_ARTICLE } from '../types'
 
 const state = {
-	next:{},
-	prev:{}
+  next:{},
+  prev:{}
 }
 
 const mutations = {
-	[PRENEXT_ARTICLE](state,action){
-		state.prev = action.prenextArticle.prev || {}
-		state.next = action.prenextArticle.next || {}
-	}
+  [PRENEXT_ARTICLE](state,action){
+    state.prev = action.prenextArticle.prev || {}
+    state.next = action.prenextArticle.next || {}
+  }
 }
 
 export default {
-	state,
-	mutations
+  state,
+  mutations
 }

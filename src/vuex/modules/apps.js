@@ -1,3 +1,5 @@
+'use strict'
+
 import {
 	SUCCESS_GET_APPS,
 	FAILURE_GET_APPS
@@ -9,14 +11,14 @@ const state = {
 
 const mutations = {
   [FAILURE_GET_APPS](state){
-  	state.items = []
+    state.items = []
   },
   [SUCCESS_GET_APPS](state,action){
-  	state.items = action.apps
+    state.items = action.apps
   }
 }
 
 export default {
-	state,
-	mutations
+  state,
+  mutations
 }

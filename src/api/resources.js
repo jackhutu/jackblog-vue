@@ -1,7 +1,9 @@
+'use strict'
+
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import {API_ROOT} from '../config'
-import { saveCookie,getCookie,signOut } from '../utils/authService'
+import { getCookie,signOut } from '../utils/authService'
 
 Vue.use(VueResource)
 
@@ -12,9 +14,9 @@ Vue.http.options.xhr = {withCredentials: true}
 Vue.http.interceptors.push({
   request (request) {
     // 这里对请求体进行处理
-    request.headers = request.headers || {};
+    request.headers = request.headers || {}
     if (getCookie('token')) {
-      request.headers.Authorization = 'Bearer ' + getCookie('token').replace(/(^\")|(\"$)/g, "");
+      request.headers.Authorization = 'Bearer ' + getCookie('token').replace(/(^\")|(\"$)/g, '')
     }
     return request
   },

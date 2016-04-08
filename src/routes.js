@@ -1,3 +1,4 @@
+'use strict'
 
 export default function (router) {
   router.map({
@@ -25,9 +26,7 @@ export default function (router) {
       component: require('./components/NotFound.vue')
     }
   })
-
   // router.beforeEach((transition)=>{
   //   transition.next()
   // })
-
 }

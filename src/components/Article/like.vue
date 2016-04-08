@@ -12,9 +12,9 @@
 export default {
   props:['likeCount','isLike'],
   methods:{
-  	toggleLike(){
+    toggleLike(){
       this.$parent.handleToggleLike()
-  	}
+    }
   }
 }
 </script>

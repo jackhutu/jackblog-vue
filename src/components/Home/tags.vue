@@ -16,23 +16,22 @@
 </template>
 
 <script>
-	import tiny from '../../assets/images/tiny.gif'
+import tiny from '../../assets/images/tiny.gif'
 
-	export default {
-		props: ['tagList','options','isFetching'],
-		data(){
-			return {
-				loadingImg: tiny
-			}
-		},
-		methods:{
-			changeSort(sortName){
-				this.$parent.handleChange({'currentPage':1,'sortName':sortName,'tagId':''})
-			},
-			changeTag(tagId){
-				this.$parent.handleChange({'currentPage':1,'sortName':'','tagId':tagId})
-			}
-		}
-	}
-
+export default {
+  props: ['tagList','options','isFetching'],
+  data(){
+    return {
+      loadingImg: tiny
+    }
+  },
+  methods:{
+    changeSort(sortName){
+      this.$parent.handleChange({'currentPage':1,'sortName':sortName,'tagId':''})
+    },
+    changeTag(tagId){
+      this.$parent.handleChange({'currentPage':1,'sortName':'','tagId':tagId})
+    }
+  }
+}
 </script>

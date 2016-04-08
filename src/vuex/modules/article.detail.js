@@ -1,22 +1,24 @@
+'use strict'
+
 import {
 	ARTICLE_DETAIL,
-	TOGGLE_LIKE,
+	TOGGLE_LIKE
 } from '../types'
 
 const state = {
-	item:{}
+  item:{}
 }
 
 const mutations = {
-	[ARTICLE_DETAIL](state,action){
-		state.item = {...state.item, ...action.articleDetail }
-	},
-	[TOGGLE_LIKE](state,action){
-		state.item = {...state.item, isLike:action.isLike, like_count: action.like_count}
-	}
+  [ARTICLE_DETAIL](state,action){
+    state.item = {...state.item, ...action.articleDetail }
+  },
+  [TOGGLE_LIKE](state,action){
+    state.item = {...state.item, isLike:action.isLike, like_count: action.like_count}
+  }
 }
 
 export default {
-	state,
-	mutations
+  state,
+  mutations
 }

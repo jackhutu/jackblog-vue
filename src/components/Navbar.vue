@@ -4,23 +4,23 @@
 		      <a v-link="{ path: '/' }" class="navbar-item logo" :class="{'active':$route.name !== 'apps'}" title="首页">
 		        Hu
 		      </a>
-		      <a v-link="{ path: '/apps',activeClass: 'active'}" class="navbar-item mobile hidden-xs" title="移动应用">
+		      <a v-link="{ path: '/apps',activeClass: 'active'}" class="navbar-item mobile" title="移动应用">
 		      	<i class="fa fa-mobile"></i>
 		      </a>
 		  </div>   
 
 		  <div class="navbar-expanded">
 		      <div>
-			      <a class="navbar-item expanded-version" href="http://angular2.jackhu.top" title="Angular2.x">
+			      <a class="navbar-item expanded-version" href="http://angular2.jackhu.top" title="angular2.x版">
 			        <img src='http://upload.jackhu.top/icons/angular2.png-32x32' /> 
 			      </a>
-			      <a class="navbar-item expanded-version" href="http://vue.jackhu.top" title="Vue">
+			      <a class="navbar-item expanded-version" href="http://vue.jackhu.top" title="Vue版">
 			      	<img src='http://upload.jackhu.top/icons/vue.png-32x32' /> 
 			      </a>
-			      <a class="navbar-item expanded-version" href="http://redux.jackhu.top" title="React">
+			      <a class="navbar-item expanded-version" href="http://react.jackhu.top" title="React版">
 			        <img src='http://upload.jackhu.top/icons/react.png-32x32' /> 
 			      </a>
-			      <a class="navbar-item expanded-version" href="http://angular1.jackhu.top" title="Angular1.x">
+			      <a class="navbar-item expanded-version" href="http://angular1.jackhu.top" title="Angular1.x版">
 			      	<img src='http://upload.jackhu.top/icons/AngularJS.png-32x32' /> 
 			      </a>
 		        <a class="navbar-item change-mode" href="javascript:;" @click="changeMode()">
@@ -75,22 +75,22 @@
   	  	  </a>
 		  	</div>
 		  	<div class="pull-right"> 
-		  	  <a class="navbar-item expanded-version" href="http://angular1.jackhu.top" title="Angular1.x">
+		  	  <a class="navbar-item expanded-version" href="http://angular1.jackhu.top" title="Angular1.x版">
 		  	  	<img src='http://upload.jackhu.top/icons/AngularJS.png-16x16' /> 
 		  	  </a>
 		  	</div>
 		  	<div class="pull-right">
-		  	  <a class="navbar-item expanded-version" href="http://redux.jackhu.top" title="React">
+		  	  <a class="navbar-item expanded-version" href="http://react.jackhu.top" title="React版">
 		  	    <img src='http://upload.jackhu.top/icons/react.png-16x16' /> 
 		  	  </a>
 				</div>
 		  	<div class="pull-right">
-			  	<a class="navbar-item expanded-version" href="http://vue.jackhu.top" title="Vue">
+			  	<a class="navbar-item expanded-version" href="http://vue.jackhu.top" title="Vue版">
 			  		<img src='http://upload.jackhu.top/icons/vue.png-16x16' /> 
 			  	</a>
 		  	</div>
 		  	<div class="pull-right">
-		  	  <a class="navbar-item expanded-version" href="http://angular2.jackhu.top" title="Agnular2.x">
+		  	  <a class="navbar-item expanded-version" href="http://angular2.jackhu.top" title="Agnular2.x版">
 		  	    <img src='http://upload.jackhu.top/icons/angular2.png-16x16' /> 
 		  	  </a>
 		  	</div>
@@ -104,35 +104,35 @@ import defaultAvatar from '../assets/images/avatar.png'
 import { dropdown } from 'vue-strap'
 
 export default {
-	components:{
-		dropdown
-	},
-	vuex:{
-		getters:{
-			auth: state => state.auth,
-			styleMode: state => state.globalVal.styleMode
-		},
-		actions:{
-			changeStyleMode,
-			logout,
-			getUserInfo
-		}
-	},
-	computed: {
-		defaultAvatar() {
-			return defaultAvatar
-		}
-	},
-	created (){
-		if(this.auth.token){
-			this.getUserInfo()
-		}
-	},
-	methods: {
-		changeMode(){
-			this.changeStyleMode()
-			document.body.className = this.styleMode
-		}
-	}
+  components:{
+    dropdown
+  },
+  vuex:{
+    getters:{
+      auth: state => state.auth,
+      styleMode: state => state.globalVal.styleMode
+    },
+    actions:{
+      changeStyleMode,
+      logout,
+      getUserInfo
+    }
+  },
+  computed: {
+    defaultAvatar() {
+      return defaultAvatar
+    }
+  },
+  created (){
+    if(this.auth.token){
+      this.getUserInfo()
+    }
+  },
+  methods: {
+    changeMode(){
+      this.changeStyleMode()
+      document.body.className = this.styleMode
+    }
+  }
 }
 </script>

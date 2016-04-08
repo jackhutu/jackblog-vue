@@ -84,7 +84,7 @@ export default {
       this.newCommentContent = ''
     },
     submitReply(i,cid){
-      const eleForm = document.getElementById("replyForm" + i)
+      const eleForm = document.getElementById('replyForm' + i)
       const eleTextarea = eleForm.getElementsByTagName('textarea')[0]
       const content = eleTextarea.value 
       this.$parent.handleSubmitReply(cid,content)
@@ -94,7 +94,7 @@ export default {
     showReply(i,nickname){
       //判断是否登录.未登录则弹出登录框.
       if(this.user){
-        const eleForm = document.getElementById("replyForm" + i)
+        const eleForm = document.getElementById('replyForm' + i)
         const eleTextarea = eleForm.getElementsByTagName('textarea')[0]
         if(eleForm.className.indexOf('hide') != -1){
           eleForm.className = 'new-reply'
@@ -104,7 +104,7 @@ export default {
           eleForm.className += ' hide'
         }
       }else{
-        this.$parent.openLoginModal();
+        this.$parent.openLoginModal()
       }
     },
     goComment(){
@@ -112,7 +112,7 @@ export default {
       if(this.user){
         eleForm.focus()
       }else{
-        this.$parent.openLoginModal();
+        this.$parent.openLoginModal()
       }
     }
   }

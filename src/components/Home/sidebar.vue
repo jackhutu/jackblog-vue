@@ -9,8 +9,7 @@
 	</div>
 </template>
 <script>
-
 export default {
-	props: ['indexImg']
+  props: ['indexImg']
 }
 </script>
