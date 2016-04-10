@@ -19,6 +19,14 @@ $ cd jackblog-vue
 $ npm install
 $ gulp serve
 ```
+在浏览器中自动打开 http://localhost:5100
+
+## 调试
+- 默认开启 vue-devtools [chrome浏览器扩展](https://github.com/vuejs/vue-devtools), 生产环境自动关闭, 手动开启方式:
+
+```
+添加 Vue.config.devtools = true
+```
 
 ### 目录结构
 
