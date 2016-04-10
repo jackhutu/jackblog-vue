@@ -1,5 +1,3 @@
-'use strict'
-
 import { PRENEXT_ARTICLE } from '../types'
 
 const state = {

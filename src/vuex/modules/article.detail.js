@@ -1,5 +1,3 @@
-'use strict'
-
 import {
 	ARTICLE_DETAIL,
 	TOGGLE_LIKE

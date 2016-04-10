@@ -1,5 +1,3 @@
-'use strict'
-
 import cookie from 'react-cookie'
 import { CookieDomain } from '../config.js'
 let cookieConfig = {}

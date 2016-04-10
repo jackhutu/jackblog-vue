@@ -1,5 +1,3 @@
-'use strict'
-
 import {
 	SUCCESS_GET_SNSLOGINS,
 	FAILURE_GET_SNSLOGINS

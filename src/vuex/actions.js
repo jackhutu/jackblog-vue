@@ -1,5 +1,3 @@
-'use strict'
-
 import api from '../api'
 import * as types from './types'
 import { saveCookie,signOut } from '../utils/authService'

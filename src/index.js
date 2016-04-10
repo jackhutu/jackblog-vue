@@ -1,5 +1,3 @@
-'use strict'
-
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueValidator from 'vue-validator'
@@ -16,7 +14,6 @@ import './assets/styles/index.css'
 
 Vue.use(VueRouter)
 Vue.use(VueValidator)
-Vue.config.warnExpressionErrors = false
 Object.keys(filters).forEach(k => Vue.filter(k, filters[k]))
 
 const router = new VueRouter({

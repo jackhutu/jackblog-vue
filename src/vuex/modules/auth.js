@@ -1,5 +1,3 @@
-'use strict'
-
 import {
 	LOGIN_SUCCESS,
 	USERINFO_SUCCESS,

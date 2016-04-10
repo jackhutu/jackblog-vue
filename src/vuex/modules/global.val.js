@@ -1,5 +1,3 @@
-'use strict'
-
 import {API_ROOT} from '../../config'
 import {
 	CHANGE_STYLE_MODE,

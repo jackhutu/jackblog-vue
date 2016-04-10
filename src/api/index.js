@@ -1,5 +1,3 @@
-'use strict'
-
 import {UserResource,AuthResource,ArticleResource,TagResource,MobileResource,CommentResource} from './resources'
 
 export default {

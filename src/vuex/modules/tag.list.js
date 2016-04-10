@@ -1,5 +1,3 @@
-'use strict'
-
 import {
 	GET_TAG_LIST_SUCCESS,
 	GET_TAG_LIST_FAILURE

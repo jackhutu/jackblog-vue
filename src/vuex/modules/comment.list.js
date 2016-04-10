@@ -1,5 +1,3 @@
-'use strict'
-
 import {
 	COMMENT_LIST,
 	SUCCESS_ADD_COMMENT,

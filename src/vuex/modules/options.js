@@ -1,5 +1,3 @@
-'use strict'
-
 import {
 	CHANGE_OPTIONS
 } from '../types'

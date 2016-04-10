@@ -1,5 +1,3 @@
-'use strict'
-
 import {
 	ARTICLE_LIST,
 	ADD_ARTICLE_LIST,
