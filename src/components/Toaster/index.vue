@@ -1,13 +1,13 @@
 <template>
-	<vue-toastr v-ref:toastr></vue-toastr>
+  <vue-toast v-ref:toast></vue-toast>
 </template>
 
 <script>
-import vueToastr from 'vue-toastr'
+import vueToast from 'vue-toast'
 import { showMsg,hideMsg } from '../../vuex/actions'
 
 export default {
-  components: { vueToastr },
+  components: { vueToast },
   vuex:{
     getters:{
       msg: ({showmsg}) => showmsg.message
@@ -28,14 +28,12 @@ export default {
     }
   },
   methods:{
-    showToastr(content,type='error',position='toast-top-right'){
-      this.$refs.toastr.Add({
-        msg: content,
-        title: '',
-        clickClose: true,
-        timeout: 3000,
-        type: type,
-        position: position
+    showToastr(content,type='error',position='top right'){
+      this.$refs.toast.setOptions({ maxToasts:3, position: position })
+      this.$refs.toast.showToast(content, {
+        theme: type,
+        timeLife: 2000,
+        closeBtn: false
       })
     }
   }

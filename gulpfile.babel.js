@@ -9,7 +9,7 @@ import gulpSequence from 'gulp-sequence'
 import nodemon from 'gulp-nodemon'
 import open from 'open'
 
-const DEV_PORT = 5100,PROD_PORT = 8400
+const DEV_PORT = 3000,PROD_PORT = 8400
 gulp.task('serve', cb =>{
   let webpackConfig = require('./webpack.config')
   let myConfig = Object.create(webpackConfig)

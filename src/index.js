@@ -9,7 +9,7 @@ import App from './components/App.vue'
 import 'font-awesome/css/font-awesome.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'jackblog-sass/dist/index.css'
-import 'vue-toastr/dist/vue-toastr.css'
+import 'vue-toast/dist/vue-toast.min.css'
 import './assets/styles/index.css'
 
 Vue.use(VueRouter)
