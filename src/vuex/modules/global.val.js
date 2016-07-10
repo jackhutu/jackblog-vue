@@ -4,16 +4,18 @@ import {
 	GET_INDEX_IMG,
 	GET_CAPTCHAURL
 } from '../types'
+import { getCookie,saveCookie } from '../../utils/authService'
 
 const state = {
   indexImg: '',
-  styleMode: 'day-mode',
+  styleMode: getCookie('styleMode') || 'day-mode',
   captchaUrl: API_ROOT + 'users/getCaptcha?'
 }
 
 const mutations = {
   [CHANGE_STYLE_MODE](state){
     state.styleMode = (state.styleMode === 'day-mode')?'night-mode':'day-mode'
+    saveCookie('styleMode', state.styleMode)
   },
   [GET_INDEX_IMG](state, action){
     state.indexImg = action.indexImg

@@ -32,8 +32,8 @@ export const getIndexImage = ({dispatch}) => {
 
 export const logout = ({dispatch, router}) => {
   signOut()
-  router.go({path:'/'})
   dispatch(types.LOGOUT_USER)
+  window.location.pathname = '/'
 }
 
 export const getSnsLogins = ({ dispatch }) => {

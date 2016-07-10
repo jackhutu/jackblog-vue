@@ -123,6 +123,9 @@ export default {
       return defaultAvatar
     }
   },
+  beforeCompile(){
+    document.body.className = this.styleMode
+  },
   created (){
     if(this.auth.token){
       this.getUserInfo()
