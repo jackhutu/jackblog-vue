@@ -1,1 +1,48 @@
 /*自定义css*/
+.vue-toast-manager_container.\--top {
+  top: 45px;
+}
+
+/*.navbar-shrink a.expanded-var,.navbar-expanded a.expanded-var{
+  display: block;
+  background-image: url('../images/icons.png');
+  background-origin: content-box;
+  background-repeat: no-repeat;
+}
+.navbar-expanded a.expanded-var{
+  width: 45px;
+  height: 44px;
+  padding: 11px;
+}
+
+.navbar-expanded a.angular2{
+  background-position: 0 0;
+}
+.navbar-expanded a.angular1{
+  background-position: 0 -40px;
+}
+.navbar-expanded a.react{
+  background-position: 0 -80px;
+}
+.navbar-expanded a.vue{
+  background-position: 0 -120px;
+}
+
+.navbar-shrink a.expanded-var{
+  width: 44px;
+  height: 45px;
+  padding: 14px;
+}
+.navbar-shrink a.angular2{
+  background-position: -40px 0;
+}
+.navbar-shrink a.angular1{
+  background-position: -40px -40px;
+}
+.navbar-shrink a.react{
+  background-position: -40px -80px;
+}
+.navbar-shrink a.vue{
+  background-position: -40px -120px;
+}
+*/

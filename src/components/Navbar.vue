@@ -11,17 +11,13 @@
 
 		  <div class="navbar-expanded">
 		      <div>
-			      <a class="navbar-item expanded-version" href="http://angular2.jackhu.top" title="angular2.x版">
-			        <img src='http://upload.jackhu.top/icons/angular2.png-32x32' /> 
+			      <a class="expanded-var angular2" href="http://angular2.jackhu.top" title="angular2.x版">
 			      </a>
-			      <a class="navbar-item expanded-version" href="http://vue.jackhu.top" title="Vue版">
-			      	<img src='http://upload.jackhu.top/icons/vue.png-32x32' /> 
+			      <a class="expanded-var vue" href="http://vue.jackhu.top" title="Vue版">
 			      </a>
-			      <a class="navbar-item expanded-version" href="http://react.jackhu.top" title="React版">
-			        <img src='http://upload.jackhu.top/icons/react.png-32x32' /> 
+			      <a class="expanded-var react" href="http://react.jackhu.top" title="React版">
 			      </a>
-			      <a class="navbar-item expanded-version" href="http://angular1.jackhu.top" title="Angular1.x版">
-			      	<img src='http://upload.jackhu.top/icons/AngularJS.png-32x32' /> 
+			      <a class="expanded-var angular1" href="http://angular1.jackhu.top" title="Angular1.x版">
 			      </a>
 		        <a class="navbar-item change-mode" href="javascript:;" @click="changeMode()">
 		        	<i v-if="styleMode === 'day-mode'" class="fa fa-moon-o"></i>
@@ -68,32 +64,18 @@
 			  	    <i class="fa fa-sign-in"></i> 登录
 			  	</a>
 		  	</div>
-		  	<div class="pull-right">
-  	  	  <a class="navbar-item change-mode" href="javascript:;" @click="changeMode()">
+  	  	  <a class="pull-right navbar-item change-mode" href="javascript:;" @click="changeMode()">
   		  	  <i v-if="styleMode === 'day-mode'" class="fa fa-moon-o"></i>
   		  	  <i v-else class="fa fa-sun-o"></i>
   	  	  </a>
-		  	</div>
-		  	<div class="pull-right"> 
-		  	  <a class="navbar-item expanded-version" href="http://angular1.jackhu.top" title="Angular1.x版">
-		  	  	<img src='http://upload.jackhu.top/icons/AngularJS.png-16x16' /> 
-		  	  </a>
-		  	</div>
-		  	<div class="pull-right">
-		  	  <a class="navbar-item expanded-version" href="http://react.jackhu.top" title="React版">
-		  	    <img src='http://upload.jackhu.top/icons/react.png-16x16' /> 
-		  	  </a>
-				</div>
-		  	<div class="pull-right">
-			  	<a class="navbar-item expanded-version" href="http://vue.jackhu.top" title="Vue版">
-			  		<img src='http://upload.jackhu.top/icons/vue.png-16x16' /> 
-			  	</a>
-		  	</div>
-		  	<div class="pull-right">
-		  	  <a class="navbar-item expanded-version" href="http://angular2.jackhu.top" title="Agnular2.x版">
-		  	    <img src='http://upload.jackhu.top/icons/angular2.png-16x16' /> 
-		  	  </a>
-		  	</div>
+          <a class="pull-right expanded-var angular1" href="http://angular1.jackhu.top" title="Angular1.x版">
+          </a>
+          <a class="pull-right expanded-var react" href="http://react.jackhu.top" title="React版">
+          </a>
+          <a class="pull-right expanded-var vue" href="http://vue.jackhu.top" title="Vue版">
+          </a>
+          <a class="pull-right expanded-var angular2" href="http://angular2.jackhu.top" title="Agnular2.x版">
+          </a>
 		  </div>
 		</div>
 </template>

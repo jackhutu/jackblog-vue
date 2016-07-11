@@ -1,3 +1,11 @@
+### [查看Releases](https://github.com/jackhutu/jackblog-vue/releases)
+
+1.2.3 / 2016-07-11
+==================
+
+* 更新依赖及相关代码
+* 增加styleModel cookie存储
+
 1.2.2 / 2016-05-07
 ==================
 
