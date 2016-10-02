@@ -1,0 +1,7 @@
+*.md
+.git
+node_modules
+test
+test_coverage
+webpack
+src
