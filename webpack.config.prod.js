@@ -31,7 +31,7 @@ module.exports = {
     new ExtractTextPlugin('[hash:8].style.css', { allChunks: true }),
     new HtmlWebpackPlugin({
       favicon:path.join(__dirname,'src/favicon.ico'),
-      title: "JackHu's blog vue版",
+      title: "Jackblog vue版",
       template: path.join(__dirname,'src/index.html'),  //模板文件
       inject:'body',
       hash:false,    //为静态资源生成hash值
