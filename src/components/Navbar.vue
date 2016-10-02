@@ -11,13 +11,13 @@
 
 		  <div class="navbar-expanded">
 		      <div>
-			      <a class="expanded-var angular2" href="http://angular2.jackhu.top" title="angular2.x版">
+			      <a class="expanded-var angular2" href="//angular2.jackhu.top" title="angular2.x版">
 			      </a>
-			      <a class="expanded-var vue" href="http://vue.jackhu.top" title="Vue版">
+			      <a class="expanded-var vue" href="//vue.jackhu.top" title="Vue版">
 			      </a>
-			      <a class="expanded-var react" href="http://react.jackhu.top" title="React版">
+			      <a class="expanded-var react" href="//react.jackhu.top" title="React版">
 			      </a>
-			      <a class="expanded-var angular1" href="http://angular1.jackhu.top" title="Angular1.x版">
+			      <a class="expanded-var angular1" href="//angular.jackhu.top" title="Angular1.x版">
 			      </a>
 		        <a class="navbar-item change-mode" href="javascript:;" @click="changeMode()">
 		        	<i v-if="styleMode === 'day-mode'" class="fa fa-moon-o"></i>
@@ -68,13 +68,13 @@
   		  	  <i v-if="styleMode === 'day-mode'" class="fa fa-moon-o"></i>
   		  	  <i v-else class="fa fa-sun-o"></i>
   	  	  </a>
-          <a class="pull-right expanded-var angular1" href="http://angular1.jackhu.top" title="Angular1.x版">
+          <a class="pull-right expanded-var angular1" href="//angular.jackhu.top" title="Angular1.x版">
           </a>
-          <a class="pull-right expanded-var react" href="http://react.jackhu.top" title="React版">
+          <a class="pull-right expanded-var react" href="//react.jackhu.top" title="React版">
           </a>
-          <a class="pull-right expanded-var vue" href="http://vue.jackhu.top" title="Vue版">
+          <a class="pull-right expanded-var vue" href="//vue.jackhu.top" title="Vue版">
           </a>
-          <a class="pull-right expanded-var angular2" href="http://angular2.jackhu.top" title="Agnular2.x版">
+          <a class="pull-right expanded-var angular2" href="//angular2.jackhu.top" title="Agnular2.x版">
           </a>
 		  </div>
 		</div>
