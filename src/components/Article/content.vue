@@ -6,7 +6,7 @@
       <span class="comments-count">评论{{articleDetail.comment_count}}</span>
       <span class="likes-count">喜欢{{articleDetail.like_count}}</span>
     </div> 
-    <div class="markdown-content">{{{ articleDetail.content }}}</div>
+    <div class="markdown-content" v-html="articleDetail.content"></div>
   </div>
 </template>
 <script>

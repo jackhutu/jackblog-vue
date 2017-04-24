@@ -1,15 +1,17 @@
 <template>
 	<ul class="article-list list-unstyled clearfix">
 		<li v-for="article in articleList" class="article-item" :class="article.images.length > 0 ? 'have-img' : ''">
-			<a v-if="article.images.length > 0" v-link="{ name: 'article', params: {aid: article._id } }" class="wrap-img">
+			<router-link v-if="article.images.length > 0" :to="{ name: 'article', params: {aid: article._id } }" class="wrap-img">
 				<img :src="article.images[0].url + '-100x100'" />
-			</a>
+			</router-link>
 			<div>
 			  <p class="list-top">               
 			  <span class="time">{{ article.publish_time | customTime }}</span>
 			  </p>
 			  <h4 class="title">
-			  	<a v-link="{ name: 'article', params: {aid: article._id } }" class="link-title">{{article.title}}</a>
+      		<router-link :to="{ name: 'article', params: {aid: article._id } }" class="link-title">
+						{{article.title}}
+					</router-link>
 			  </h4>
 			  <div class="list-footer">
 			    <span>阅读 {{article.visit_count}}</span>

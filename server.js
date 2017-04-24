@@ -1,14 +1,16 @@
-var path = require('path');
-var express = require('express');
-var favicon = require('serve-favicon');
+'use strict'
 
-var app = new express();
-var port = process.env.PORT || 8400;
+var path = require('path')
+var express = require('express')
+var favicon = require('serve-favicon')
 
-app.use(express.static(path.join(__dirname, 'dist')));
-app.use(favicon(path.join(__dirname, 'dist', 'favicon.ico')));
+var app = new express()
+var port = process.env.PORT || 8400
 
-app.get("/*", function(req, res) {
+app.use(express.static(path.join(__dirname, 'dist')))
+app.use(favicon(path.join(__dirname, 'dist', 'favicon.ico')))
+
+app.get('/*', function(req, res) {
   return res.sendFile(__dirname + '/dist/index.html')
 })
 
@@ -16,6 +18,6 @@ app.listen(port, function(err) {
   if (err) {
     console.error(err)
   } else {
-    console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port)
+    console.info('==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.', port, port)
   }
 })

@@ -1,4 +1,5 @@
-import cookie from 'react-cookie'
+import Cookies from 'universal-cookie'
+const cookies = new Cookies()
 import { CookieDomain } from '../config.js'
 let cookieConfig = {}
 if(CookieDomain !== ''){
@@ -6,21 +7,21 @@ if(CookieDomain !== ''){
 }
 
 export function saveCookie(name,value) {
-  cookie.save(name, value, cookieConfig)
+  cookies.set(name, value, cookieConfig)
 }
 
 export function getCookie(name) {
-  return cookie.load(name)
+  return cookies.get(name)
 }
 
 export function removeCookie(name) {
-  cookie.remove(name, cookieConfig)
+  cookies.remove(name, cookieConfig)
 }
 
 export function signOut() {
-  cookie.remove('token', cookieConfig)
+  cookies.remove('token', cookieConfig)
 }
 
 export function isLogin() {
-  return !!cookie.load('token')
+  return !!cookies.get('token')
 }

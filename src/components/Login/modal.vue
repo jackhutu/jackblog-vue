@@ -1,5 +1,5 @@
 <template>
-	<modal :show.sync="showLoginModal" effect="fade" width="400">
+	<modal v-model="showLoginModal" effect="fade" width="400">
 	  <div slot="modal-header" class="modal-header">
 	  	<h4 class="modal-title text-center">请用以下方式登录</h4>
 	  </div>
@@ -15,7 +15,7 @@
 
 <script>
 import snsloginbtns from './snsLogin'
-import { getSnsLogins } from '../../vuex/actions'
+import { mapState,mapActions } from 'vuex'
 import { modal } from 'vue-strap'
 
 export default {
@@ -23,13 +23,10 @@ export default {
     modal,
     snsloginbtns
   },
-  vuex:{
-    getters:{
-      logins: ({logins}) => logins.items
-    },
-    actions:{
-      getSnsLogins
-    }
+  computed: {
+    ...mapState({
+      logins: ({logins}) => logins.items     
+    })
   },
   data(){
     return {
@@ -42,6 +39,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'getSnsLogins'
+    ]),    
     showModal(){
       this.showLoginModal = true
     }

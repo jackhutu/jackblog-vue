@@ -11,8 +11,8 @@ const mutations = {
   [FAILURE_GET_APPS](state){
     state.items = []
   },
-  [SUCCESS_GET_APPS](state,action){
-    state.items = action.apps
+  [SUCCESS_GET_APPS](state,payload){
+    state.items = payload.apps
   }
 }
 

@@ -2,7 +2,7 @@
 	<div class="login-sns">
 	  <ul>
 	  	<li v-for="item in logins" @click.stop.prevent="snsLogin(item)">
-	  		<a class="{{item}}" href="#"><i class="fa fa-{{item}}"></i></a>
+	  		<a v-bind:class="item" href="#"><i v-bind:class="'fa fa-' + item"></i></a>
 	  	</li>
 	  </ul>
 	</div>

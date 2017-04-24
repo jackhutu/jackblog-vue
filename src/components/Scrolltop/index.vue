@@ -10,7 +10,7 @@ export default {
       isShowTop:false
     }
   },
-  ready(){
+  mounted(){
     window.addEventListener('scroll', this.handleScroll)
   },
   methods:{

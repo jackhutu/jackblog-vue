@@ -1,12 +1,12 @@
 <template>
 		<div class="navbar-box navbar-skin">
 		  <div class="navbar-menu">
-		      <a v-link="{ path: '/' }" class="navbar-item logo" :class="{'active':$route.name !== 'apps'}" title="首页">
-		        Hu
-		      </a>
-		      <a v-link="{ path: '/apps',activeClass: 'active'}" class="navbar-item mobile" title="移动应用">
-		      	<i class="fa fa-mobile"></i>
-		      </a>
+      		<router-link :to="{ path: '/' }" class="navbar-item logo" :class="{'active':$route.name !== 'apps'}" title="首页">
+						Hu
+					</router-link>
+      		<router-link :to="{ path: '/apps',activeClass: 'active'}" class="navbar-item mobile" title="移动应用">
+						<i class="fa fa-mobile"></i>
+					</router-link>
 		  </div>   
 
 		  <div class="navbar-expanded">
@@ -29,14 +29,14 @@
 		        <a href="javascript:;" class="navbar-item expanded-logout" @click="logout()" title="登出">
 		            <i class="fa fa-sign-out"></i>
 		        </a>
-		        <a v-link="{ path: '/settings' }" href="javascript:;" class="navbar-item expanded-avatar" title="{{auth.user.nickname}}">          
-		          <img :src="auth.user.avatar || defaultAvatar" /> 
-		        </a>  
+						<router-link :to="{ path: '/settings' }" class="navbar-item expanded-avatar" v-bind:title="auth.user.nickname">
+							<img :src="auth.user.avatar || defaultAvatar" />
+						</router-link>
 		      </div>
 	      	<div v-else>
-	      	  <a v-link="{ path: '/login',activeClass:'active' }" class="navbar-item" title="登录">
-	      	    <i class="fa fa-sign-in"></i>
-	      	  </a>    
+						<router-link :to="{ path: '/login',activeClass:'active' }" class="navbar-item" title="登录">
+							<i class="fa fa-sign-in"></i>
+						</router-link>   
 	      	</div>
 		  </div>
 
@@ -48,10 +48,12 @@
 			  	  </a>
 			  	  <ul name="dropdown-menu" class="dropdown-menu pull-right">
 				  	  <li>
-				  	    <a v-link="{ path: '/settings' }"><i class="fa fa-cog"></i> 设置</a>
+							  <router-link :to="{ path: '/settings' }">
+									<i class="fa fa-cog"></i> 设置
+								</router-link>
 				  	  </li>
 				  	  <li role="separator" class="divider"></li>
-				  	  <li>
+				  	  <li>					
 				  	    <a href="javascript:;" class="shrink-logout" @click="logout()">
 				  	        <i class="fa fa-sign-out"></i> 登出
 				  	    </a>  
@@ -60,9 +62,9 @@
 			  	</dropdown>
 		  	</div>
 		  	<div v-else class="pull-right">
-			  	<a v-link="{ path: '/login' }" class="shrink-login" title="登录">
-			  	    <i class="fa fa-sign-in"></i> 登录
-			  	</a>
+					<router-link :to="{ path: '/login' }" class="shrink-login" title="登录">
+						<i class="fa fa-sign-in"></i> 登录
+					</router-link>
 		  	</div>
   	  	  <a class="pull-right navbar-item change-mode" href="javascript:;" @click="changeMode()">
   		  	  <i v-if="styleMode === 'day-mode'" class="fa fa-moon-o"></i>
@@ -81,39 +83,35 @@
 </template>
 
 <script>
-import { changeStyleMode,logout,getUserInfo } from '../vuex/actions'
 import defaultAvatar from '../assets/images/avatar.png'
 import { dropdown } from 'vue-strap'
+import { mapState,mapActions } from 'vuex'
 
 export default {
   components:{
     dropdown
   },
-  vuex:{
-    getters:{
-      auth: state => state.auth,
-      styleMode: state => state.globalVal.styleMode
-    },
-    actions:{
-      changeStyleMode,
-      logout,
-      getUserInfo
-    }
-  },
   computed: {
+    ...mapState({
+      auth: state => state.auth,
+      styleMode: state => state.globalVal.styleMode     
+    }),
     defaultAvatar() {
       return defaultAvatar
-    }
-  },
-  beforeCompile(){
-    document.body.className = this.styleMode
-  },
+    }		
+  }, 
   created (){
+		document.body.className = this.styleMode
     if(this.auth.token){
       this.getUserInfo()
     }
   },
   methods: {
+    ...mapActions([
+      'changeStyleMode',
+      'logout',
+      'getUserInfo'
+    ]),		
     changeMode(){
       this.changeStyleMode()
       document.body.className = this.styleMode

@@ -5,7 +5,7 @@
         <a href="javascript:;" @click.prevent="goComment" class="goto-comment pull-right"><i class="fa fa-pencil"></i>添加新评论</a>
     </div>
     <div id="comment_list">
-        <div class="comment-item" v-for="(i, comment) in commentList">
+        <div class="comment-item" v-for="(comment,i) in commentList">
           <div class="content">
             <div class="meta-top">
               <a class="avatar">
@@ -23,9 +23,9 @@
 
             <Reply v-show="comment.replys.length > 0" :replys="comment.replys" :k="i"></Reply>
 
-             <form id="replyForm{{i}}" class="new-reply hide" @submit.prevent="submitReply(i,comment._id)"> 
+             <form v-bind:id="'replyForm' + i" class="new-reply hide" @submit.prevent="submitReply(i,comment._id)"> 
                <div class="comment-text"> 
-                  <textarea id="replyContent{{i}}"
+                  <textarea v-bind:id="'replyContent' + i"
                       required 
                       maxLength="2000" 
                       placeholder="写下你的回复…">

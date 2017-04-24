@@ -1,46 +1,50 @@
 <template>
   <div class="article-box">
-    <Content :article-detail="articleDetail"></Content>
+    <ArtickeContent :article-detail="articleDetail"></ArtickeContent>
     <Like :like-count="articleDetail.like_count" :is-like="articleDetail.isLike"></Like>
     <Prenext :prev-article="prevArticle" :next-article="nextArticle"></Prenext>
     <Comment :comment-list="commentList" :user="user"></Comment>
-    <Loginmodal v-ref:modal></Loginmodal>
+    <Loginmodal ref='modal'></Loginmodal>
     <Scrolltop></Scrolltop>
   </div>
 </template>
 <script>
-import { getArticleDetail,getPrenext,getCommentList,toggleLike,addComment,addReply } from '../../vuex/actions'
-import Content from './content.vue'
+import ArtickeContent from './content.vue'
 import Comment from './comment.vue'
 import Prenext from './prenext.vue'
 import Like from './like.vue'
 import Loginmodal from '../Login/modal.vue'
 import Scrolltop from '../Scrolltop/index.vue'
+import { mapState,mapActions } from 'vuex'
 
 export default {
-  components: { Content,Like,Prenext,Comment,Loginmodal,Scrolltop },
-  vuex:{
-    getters:{
+  components: { ArtickeContent,Like,Prenext,Comment,Scrolltop,Loginmodal },
+  computed: {
+    ...mapState({
       articleDetail: ({articleDetail}) => articleDetail.item,
       user: ({auth}) => auth.user,
       nextArticle: ({prenextArticle}) => prenextArticle.next,
       prevArticle: ({prenextArticle}) => prenextArticle.prev,
       commentList: ({commentList}) => commentList.items,
       options: ({options}) => options.item,
-      aid: ({route}) => route.params.aid
-    },
-    actions:{
-      getArticleDetail,getPrenext,getCommentList,toggleLike,addComment,addReply
-    }
+      aid: ({route}) => route.params.aid    
+    })
   },
-  route:{
-    data ({ to: { params: { aid }}}) {
-      this.getPrenext(aid)
-      this.getCommentList(aid)
-      this.getArticleDetail(aid, this.user)
-    }
+  created () {
+    const aid = this.$route.params.aid
+    this.getPrenext(aid)
+    this.getCommentList(aid)
+    this.getArticleDetail(aid, this.user)
   },
   methods:{
+    ...mapActions([
+      'getArticleDetail',
+      'getPrenext',
+      'getCommentList',
+      'toggleLike',
+      'addComment',
+      'addReply'
+    ]),     
     openLoginModal(){
       this.$refs.modal.showModal()
     },

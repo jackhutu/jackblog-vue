@@ -1,21 +1,26 @@
 <template>
-  <vue-toast v-ref:toast></vue-toast>
+  <vue-toast ref="toast"></vue-toast>
 </template>
 
 <script>
 import vueToast from 'vue-toast'
-import { showMsg,hideMsg } from '../../vuex/actions'
+import { mapState,mapActions } from 'vuex'
 
 export default {
   components: { vueToast },
-  vuex:{
-    getters:{
-      msg: ({showmsg}) => showmsg.message
-    },
-    actions:{
-      showMsg,hideMsg
-    }
-  },
+  computed: {
+    ...mapState({
+      msg: ({showmsg}) => showmsg.message 
+    })
+  },  
+  // vuex:{
+  //   getters:{
+  //     msg: ({showmsg}) => showmsg.message
+  //   },
+  //   actions:{
+  //     showMsg,hideMsg
+  //   }
+  // },
   watch:{
     'msg':{
       handler: function (val, oldVal) {
@@ -28,6 +33,10 @@ export default {
     }
   },
   methods:{
+    ...mapActions([
+      'showMsg',
+      'hideMsg'
+    ]),     
     showToastr(content,type='error',position='top right'){
       this.$refs.toast.setOptions({ maxToasts:3, position: position })
       this.$refs.toast.showToast(content, {

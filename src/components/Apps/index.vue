@@ -29,22 +29,21 @@
 </div>
 </template>
 <script>
-import { getApps } from '../../vuex/actions'
+import { mapState,mapActions } from 'vuex'
 
 export default {
-  vuex:{
-    getters:{
+  computed:{
+    ...mapState({
       apps: ({apps}) => apps.items
-    },
-    actions:{
-      getApps
-    }
+    })
   },
-  route:{
-    activate ({ next }) {
-      this.getApps()
-      next()
-    }
+  methods:{
+    ...mapActions([
+      'getApps'
+    ])
+  },
+  created () {
+    this.getApps()
   }
 }
 </script>

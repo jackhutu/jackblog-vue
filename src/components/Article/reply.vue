@@ -1,6 +1,6 @@
 <template>
   <div class="reply-list">
-    <div v-for="(i, reply) in replys" class="reply-item">
+    <div v-for="(reply, i) in replys" class="reply-item">
       <p class="reply-content">
         <a class="reply-user link-light">{{reply.user_info.nickname}}</a>：
         {{reply.content}}

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import middlewares from './middlewares'
+import createLogger from 'vuex/dist/logger'
 import apps from './modules/apps'
 import articleList from './modules/article.list'
 import prenextArticle from './modules/article.prenext'
@@ -12,13 +12,16 @@ import options from './modules/options'
 import logins from './modules/logins'
 import tagList from './modules/tag.list'
 import showmsg from './modules/showmsg'
+import * as actions from './actions'
+import * as getters from './getters'
+
 
 const debug = process.env.NODE_ENV !== 'production'
 Vue.use(Vuex)
-Vue.config.debug = debug
-Vue.config.warnExpressionErrors = false
 
 export default new Vuex.Store({
+  actions,
+  getters,
   modules: {
     apps,
     articleList,
@@ -33,5 +36,5 @@ export default new Vuex.Store({
     showmsg
   },
   strict: debug,
-  middlewares
+  plugins: debug ? [createLogger()] : []
 })
