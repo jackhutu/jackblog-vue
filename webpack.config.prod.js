@@ -24,14 +24,14 @@ module.exports = {
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
-      //filename:"vendor.js",
+      name: 'vendor',
+      //filename:'vendor.js',
       minChunks: Infinity //Infinity
     }),
     new ExtractTextPlugin('[hash:8].style.css', { allChunks: true }),
     new HtmlWebpackPlugin({
       favicon:path.join(__dirname,'src/favicon.ico'),
-      title: "Jackblog vue版",
+      title: 'Jackblog vue版',
       template: path.join(__dirname,'src/index.html'),  //模板文件
       inject:'body',
       hash:false,    //为静态资源生成hash值
@@ -43,7 +43,7 @@ module.exports = {
   ],
   module: {
     preLoaders: [
-      { test: /\.js$/, loader: "eslint-loader", exclude: /node_modules/ }
+      { test: /\.js$/, loader: 'eslint-loader', exclude: /node_modules/ }
     ],
     loaders: [
       { test: /\.vue$/,loader: 'vue', include: path.join(__dirname,'src')}, 
@@ -51,7 +51,7 @@ module.exports = {
       { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap' ) },
       { test: /\.(jpe?g|png|gif)$/i, loaders: [
         'url?limit=10000&name=images/[hash:8].[name].[ext]',
-        'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
+        'image-webpack?{progressive:true, optipng:{optimizationLevel: 7}, gifsicle:{interlaced: false}}'
       ]},
       { test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&name=fonts/[hash:8].[name].[ext]'}
     ]
@@ -62,7 +62,15 @@ module.exports = {
     }
   },
   resolve: {
-    root: path.resolve(__dirname, 'node_modules'),
-    extensions: ['','.js','.vue','.scss']
+    root: path.resolve(__dirname, 'src'),
+    extensions: ['','.js','.vue','.scss','.css'],
+    alias: {
+      components: path.resolve(__dirname, 'src/components'),
+      actions: path.resolve(__dirname, 'src/store/actions'),
+      getters: path.resolve(__dirname, 'src/store/getters'),
+      modules: path.resolve(__dirname, 'src/store/modules'),
+      store: path.resolve(__dirname, 'src/store'),
+      vue: 'vue/dist/vue.js'
+    }
   }
 }

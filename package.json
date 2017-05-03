@@ -3,7 +3,7 @@
   "version": "1.2.4",
   "description": "Jackblog vue 版",
   "scripts": {
-    "start": "gulp serve",
+    "dev": "gulp serve",
     "build": "gulp build",
     "start:dist": "gulp serve:dist",
     "pm2-start": "pm2 start --no-daemon process.json"
