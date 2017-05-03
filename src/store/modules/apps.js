@@ -1,3 +1,4 @@
+import api from '../../api'
 import {
 	SUCCESS_GET_APPS,
 	FAILURE_GET_APPS
@@ -5,6 +6,20 @@ import {
 
 const state = {
   items:[]
+}
+
+// actions
+const actions = {
+  getApps ({ commit }){
+    api.getApps().then(response => {
+      if(!response.ok){
+        return commit(FAILURE_GET_APPS)
+      }
+      commit(SUCCESS_GET_APPS, { apps: response.data.data })
+    }, response => {
+      commit(FAILURE_GET_APPS)
+    })
+  }
 }
 
 const mutations = {
@@ -18,5 +33,6 @@ const mutations = {
 
 export default {
   state,
+  actions,
   mutations
 }

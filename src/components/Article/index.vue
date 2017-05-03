@@ -31,11 +31,11 @@ export default {
     })
   },
   created () {
-    const aid = this.$route.params.aid
-    this.getPrenext(aid)
-    this.getCommentList(aid)
-    this.getArticleDetail(aid, this.user)
+    this.initData()
   },
+  watch: {
+    '$route': 'initData'
+  },  
   methods:{
     ...mapActions([
       'getArticleDetail',
@@ -44,7 +44,13 @@ export default {
       'toggleLike',
       'addComment',
       'addReply'
-    ]),     
+    ]),
+    initData(){
+      const aid = this.$route.params.aid
+      this.getPrenext(aid)
+      this.getCommentList(aid)
+      this.getArticleDetail(aid, this.user)
+    }, 
     openLoginModal(){
       this.$refs.modal.showModal()
     },
@@ -70,7 +76,7 @@ export default {
     },
     handleSubmitReply(cid,content){
       if(this.user && content.trim() !== ''){
-        this.addReply(cid,{content:content})
+        this.addReply({cid:cid,data:{content:content}})
       }else{
         this.openLoginModal()
       }

@@ -4,7 +4,7 @@
       		<router-link :to="{ path: '/' }" class="navbar-item logo" :class="{'active':$route.name !== 'apps'}" title="首页">
 						Hu
 					</router-link>
-      		<router-link :to="{ path: '/apps',activeClass: 'active'}" class="navbar-item mobile" title="移动应用">
+      		<router-link :to="{ path: '/apps',activeClass: 'active'}" class="navbar-item mobile" active-class="active" title="移动应用">
 						<i class="fa fa-mobile"></i>
 					</router-link>
 		  </div>   
@@ -42,24 +42,22 @@
 
 		  <div class="navbar-shrink">
 		  	<div v-if="auth.token && auth.user" class="pull-right">
-			  	<dropdown>
-			  	  <a href="javascript:;" class="shrink-avatar" data-toggle="dropdown">
-			  	    <img :src="auth.user.avatar || defaultAvatar" /> 
-			  	  </a>
-			  	  <ul name="dropdown-menu" class="dropdown-menu pull-right">
-				  	  <li>
-							  <router-link :to="{ path: '/settings' }">
-									<i class="fa fa-cog"></i> 设置
-								</router-link>
-				  	  </li>
-				  	  <li role="separator" class="divider"></li>
-				  	  <li>					
-				  	    <a href="javascript:;" class="shrink-logout" @click="logout()">
-				  	        <i class="fa fa-sign-out"></i> 登出
-				  	    </a>  
-				  	  </li>
-			  	  </ul>
-			  	</dropdown>
+					<a href="javascript:;" class="shrink-avatar" @click="dropdown()">
+						<img :src="auth.user.avatar || defaultAvatar" /> 
+					</a>							
+					<ul class="dropdown-menu pull-right" id="dropdownMenu">
+						<li>
+							<router-link :to="{ path: '/settings' }">
+								<i class="fa fa-cog"></i> 设置
+							</router-link>
+						</li>
+						<li role="separator" class="divider"></li>
+						<li>					
+							<a href="javascript:;" class="shrink-logout" @click="logout()">
+									<i class="fa fa-sign-out"></i> 登出
+							</a>  
+						</li>
+					</ul>
 		  	</div>
 		  	<div v-else class="pull-right">
 					<router-link :to="{ path: '/login' }" class="shrink-login" title="登录">
@@ -84,13 +82,9 @@
 
 <script>
 import defaultAvatar from '../assets/images/avatar.png'
-import { dropdown } from 'vue-strap'
 import { mapState,mapActions } from 'vuex'
 
 export default {
-  components:{
-    dropdown
-  },
   computed: {
     ...mapState({
       auth: state => state.auth,
@@ -115,7 +109,12 @@ export default {
     changeMode(){
       this.changeStyleMode()
       document.body.className = this.styleMode
-    }
+    },
+		dropdown(){
+			const dropdownMenu = document.getElementById('dropdownMenu')
+			const isShow = dropdownMenu.style.display!=='block'?'block':'none'
+			dropdownMenu.style.display = isShow
+		}
   }
 }
 </script>

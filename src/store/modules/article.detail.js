@@ -1,3 +1,4 @@
+import api from '../../api'
 import {
 	ARTICLE_DETAIL,
 	TOGGLE_LIKE
@@ -5,6 +6,38 @@ import {
 
 const state = {
   item:{}
+}
+// actions
+const actions = {
+  getArticleDetail ({ commit },id,user){
+    api.getFrontArticle(id).then(response => {
+      if(response.ok){
+        let isLike = false
+        let article = response.data.data
+        if(user){
+          user.likes.map(item=>{
+            if(item.toString() === article._id){
+              isLike = true
+            }
+          })
+        }
+        commit(ARTICLE_DETAIL, {
+          articleDetail: {...article,isLike:isLike}
+        })
+      }
+    })
+  },
+  toggleLike({ commit }, id){
+    api.toggleLike(id).then(response => {
+      const json = response.data
+      if(response.ok){
+        commit(TOGGLE_LIKE, { 
+          like_count: json.count,
+          isLike: json.isLike 
+        })
+      }
+    })
+  }
 }
 
 const mutations = {
@@ -18,5 +51,6 @@ const mutations = {
 
 export default {
   state,
+  actions,
   mutations
 }

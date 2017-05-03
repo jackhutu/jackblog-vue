@@ -3,24 +3,16 @@
 </template>
 
 <script>
-import vueToast from 'vue-toast'
+import VueToast from 'vue-toast'
 import { mapState,mapActions } from 'vuex'
 
 export default {
-  components: { vueToast },
+  components: { VueToast },
   computed: {
     ...mapState({
       msg: ({showmsg}) => showmsg.message 
     })
-  },  
-  // vuex:{
-  //   getters:{
-  //     msg: ({showmsg}) => showmsg.message
-  //   },
-  //   actions:{
-  //     showMsg,hideMsg
-  //   }
-  // },
+  },
   watch:{
     'msg':{
       handler: function (val, oldVal) {
@@ -38,8 +30,9 @@ export default {
       'hideMsg'
     ]),     
     showToastr(content,type='error',position='top right'){
-      this.$refs.toast.setOptions({ maxToasts:3, position: position })
-      this.$refs.toast.showToast(content, {
+      const toast = this.$refs.toast
+      toast.setOptions({ maxToasts:3, position: position })
+      toast.showToast(content, {
         theme: type,
         timeLife: 2000,
         closeBtn: false

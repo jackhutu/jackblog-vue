@@ -1,3 +1,4 @@
+import api from '../../api'
 import {
 	ARTICLE_LIST,
 	ADD_ARTICLE_LIST,
@@ -9,6 +10,30 @@ const state = {
   isFetching: false,
   isMore: true,
   items: []
+}
+
+const actions = {
+  getArticleList({ commit }, {options, isAdd=false}){
+    commit(REQUEST_ARTICLE_LIST)
+    api.getFrontArticleList(options).then(response => {
+      if(!response.ok){
+        return commit(GET_ARTICLE_LIST_FAILURE)
+      }
+      const json = response.data
+      const isMore = !(json.data.length < options.itemsPerPage)
+      isAdd
+        ? commit(ADD_ARTICLE_LIST,{
+          articleList: json.data,
+          isMore:isMore
+        })
+        : commit(ARTICLE_LIST,{
+          articleList: json.data,
+          isMore:isMore
+        })
+    }, response => {
+      commit(GET_ARTICLE_LIST_FAILURE)
+    })
+  }
 }
 
 const mutations = {
@@ -32,5 +57,6 @@ const mutations = {
 
 export default {
   state,
+  actions,
   mutations
 }

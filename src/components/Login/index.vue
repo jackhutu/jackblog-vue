@@ -67,11 +67,6 @@ export default {
       }
     }
   },
-  // route: {
-  //   beforeRouteEnter:function (transition) {
-  //     this.token?transition.redirect('/'):transition.next()
-  //   }
-  // },
   created() {
     this.getCaptchaUrl()
     this.getSnsLogins()
@@ -83,9 +78,6 @@ export default {
       'localLogin'
     ]),
     login(scope) {
-      console.log(this.errors)
-      console.log(this.fields)
-      console.log(this.$validator)
       this.$validator.validateAll().then(() => {
         this.localLogin(this.user)
       }).catch(() => {

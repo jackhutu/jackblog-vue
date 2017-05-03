@@ -12,6 +12,7 @@ import Settings from 'components/Settings/index'
 import Article from 'components/Article/index'
 import Apps from 'components/Apps/index'
 import NotFound from 'components/NotFound'
+import {isLogin} from './utils/authService'
 
 Vue.use(Router)
 
@@ -32,7 +33,10 @@ const router = new Router({
     {
       path: '/settings',
       name: 'settings',
-      component: Settings
+      component: Settings,
+      meta:{
+        requiresAuth: true
+      }
     },
     {
       path: '/article/:aid',
@@ -54,12 +58,17 @@ const router = new Router({
   ]
 })
 
-router.beforeEach((route, redirect, next) => {
-  if (route.matched.some(record => record.meta.goTop)) {
-    window.scroll(0, 0)
-    next()
-  } else {
-    next()
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.goTop)) {
+    window.scroll(0, 0) 
   }
+
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!isLogin()) {
+      next({path: '/login'})
+    }
+  }
+
+  next()
 })
 export default router

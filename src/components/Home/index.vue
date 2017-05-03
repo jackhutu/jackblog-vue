@@ -41,7 +41,7 @@ export default {
       this.getTagList()
     }
     if(this.articleList.length < 1){
-      this.getArticleList(this.options)
+      this.getArticleList({options:this.options})
     }
   },
   methods:{
@@ -53,7 +53,7 @@ export default {
     ]),    
     handleChange(options,isAdd=false){
       this.changeOptions(options)
-      this.getArticleList(this.options,isAdd)
+      this.getArticleList({options:this.options,isAdd:isAdd})
     }
   }
 }

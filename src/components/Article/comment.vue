@@ -85,9 +85,8 @@ export default {
     },
     submitReply(i,cid){
       const eleForm = document.getElementById('replyForm' + i)
-      const eleTextarea = eleForm.getElementsByTagName('textarea')[0]
-      const content = eleTextarea.value 
-      this.$parent.handleSubmitReply(cid,content)
+      const eleTextarea = document.getElementById('replyContent' + i)
+      this.$parent.handleSubmitReply(cid,eleTextarea.value)
       eleTextarea.value = ''
       eleForm.className += ' hide'
     },

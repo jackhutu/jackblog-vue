@@ -1,3 +1,4 @@
+import api from '../../api'
 import {
 	GET_TAG_LIST_SUCCESS,
 	GET_TAG_LIST_FAILURE
@@ -5,6 +6,19 @@ import {
 
 const state = {
   items:[]
+}
+
+const actions = {
+  getTagList({ commit }){
+    api.getTagList().then(response => {
+      if(!response.ok){
+        return commit(GET_TAG_LIST_FAILURE)
+      }
+      commit(GET_TAG_LIST_SUCCESS, { tagList: response.data.data })
+    }, response => {
+      commit(GET_TAG_LIST_FAILURE)
+    })
+  }
 }
 
 const mutations = {
@@ -18,5 +32,6 @@ const mutations = {
 
 export default {
   state,
+  actions,
   mutations
 }

@@ -2,16 +2,17 @@
   <div class="top-box">
     <Navbar></Navbar>
     <router-view></router-view>
+    <Toaster></Toaster>
   </div>
 </template>
 
 <script>
 import store from 'store'
 import Navbar from './Navbar'
-// import Toaster from './Toaster'
+import Toaster from './Toaster'
 
 export default {
   store,
-  components:{Navbar}
+  components:{ Navbar,Toaster }
 }
 </script>

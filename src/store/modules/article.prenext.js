@@ -1,8 +1,19 @@
+import api from '../../api'
 import { PRENEXT_ARTICLE } from '../types'
 
 const state = {
   next:{},
   prev:{}
+}
+
+const actions = {
+  getPrenext({ commit,rootState }, id){
+    return api.getPrenext(id,rootState.options.item).then(response => {
+      if(response.ok){
+        commit(PRENEXT_ARTICLE, { prenextArticle: response.data.data })
+      }
+    })
+  }
 }
 
 const mutations = {
@@ -14,5 +25,6 @@ const mutations = {
 
 export default {
   state,
+  actions,
   mutations
 }
