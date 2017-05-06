@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import {API_ROOT} from '../config'
-import { getCookie,signOut } from '../utils/authService'
+import { getCookie,signOut,isLogin } from '../utils/authService'
 
 Vue.use(VueResource)
 
@@ -12,7 +12,7 @@ Vue.http.options.credentials = true
 Vue.http.interceptors.push((request, next)=>{
   // 这里对请求体进行处理
   request.headers = request.headers || {}
-  if (getCookie('token')) {
+  if (isLogin()) {
     request.headers.set('Authorization', 'Bearer '+ getCookie('token').replace(/(^\")|(\"$)/g, ''))
   }
   next((response) => {

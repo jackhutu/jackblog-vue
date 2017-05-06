@@ -21,8 +21,8 @@ export default {
   methods: {
     snsLogin(provider){
       let search = API_ROOT + 'auth/' + provider + '?redirectUrl=' + window.location.origin
-      const token = getCookie('token')
-      if (token) {
+      if (isLogin()) {
+        const token = getCookie('token')
         search += '&access_token=' + token.replace(/(^\")|(\"$)/g, '')
       }
       window.location.href = search
