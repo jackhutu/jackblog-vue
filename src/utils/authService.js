@@ -3,7 +3,7 @@ const cookies = new Cookies()
 import { CookieDomain } from '../config.js'
 let cookieConfig = {}
 if(CookieDomain !== ''){
-  cookieConfig = { path:'/',maxAge:365*24*60*60,domain: CookieDomain }
+  cookieConfig = { domain: CookieDomain } //path:'/',maxAge:365*24*60*60
 }
 
 export function saveCookie(name,value) {
