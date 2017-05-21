@@ -45,7 +45,7 @@
     "font-awesome": "^4.6.3",
     "html-webpack-plugin": "2.28.0",
     "image-webpack-loader": "^3.3.1",
-    "jackblog-sass": "^1.0.7",
+    "jackblog-sass": "^1.0.8",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "rimraf": "^2.6.1",
