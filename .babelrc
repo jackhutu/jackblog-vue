@@ -1,5 +1,10 @@
 {
-  "presets": ["es2015","stage-0"],
-  "plugins": ["transform-runtime"],
+  "presets": [["env",{
+    "targets": {
+      "browsers": ["> 5%","ie > 9"],
+      "uglify": true
+    }
+  }]],
+  "plugins": ["transform-runtime","transform-object-rest-spread"],
   "comments": false
 }

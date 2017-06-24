@@ -1,6 +1,6 @@
 import {
-	SHOW_MSG,
-	HIDE_MSG
+  SHOW_MSG,
+  HIDE_MSG
 } from '../types'
 
 const state = {

@@ -22,6 +22,8 @@ const config = {
     invalid: 'ng-invalid', // model is invalid
     pristine: 'pristine', // control has not been interacted with
     dirty: 'ng-dirty' // control has been interacted with
-  } 
+  },
+  events: 'input|blur',
+  inject: true  
 }
 Vue.use(VeeValidate,config)

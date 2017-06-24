@@ -1,8 +1,8 @@
 import {API_ROOT} from '../../config'
 import {
-	CHANGE_STYLE_MODE,
-	GET_INDEX_IMG,
-	GET_CAPTCHAURL
+  CHANGE_STYLE_MODE,
+  GET_INDEX_IMG,
+  GET_CAPTCHAURL
 } from '../types'
 import { getCookie,saveCookie } from '../../utils/authService'
 

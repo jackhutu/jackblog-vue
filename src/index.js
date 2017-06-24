@@ -11,7 +11,6 @@ import 'jackblog-sass/dist/index.css'
 import 'vue-toast/dist/vue-toast.min.css'
 import './assets/styles/index.css'
 
-
 sync(store, router)
 
 new Vue({

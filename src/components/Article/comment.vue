@@ -5,12 +5,12 @@
         <a href="javascript:;" @click.prevent="goComment" class="goto-comment pull-right"><i class="fa fa-pencil"></i>添加新评论</a>
     </div>
     <div id="comment_list">
-        <div class="comment-item" v-for="(comment,i) in commentList">
+        <div class="comment-item" v-for="(comment,i) in commentList" :key="i">
           <div class="content">
             <div class="meta-top">
               <a class="avatar">
-                <img :src="comment.user_id.avatar || defaultAvatar" alt="comment.user_id.nickname" />
-              </a>        
+                <img :src="comment.user_id.avatar || defaultAvatar" alt="comment.user_id.nickname"></img>
+              </a>
               <a class="author-name link-light">{{comment.user_id.nickname}}</a>
               <span class="reply-time">
                 {{comment.created | formatDate}}
@@ -31,7 +31,7 @@
                       placeholder="写下你的回复…">
                   </textarea> 
                   <div> 
-                    <input type="submit" value="发 表" class="btn btn-sm btn-info" />
+                    <input type="submit" value="发 表" class="btn btn-sm btn-info"></input>
                   </div> 
                </div>
              </form>
@@ -50,7 +50,7 @@
             placeholder="写下你的评论…" 
             id="comment_content"></textarea>
           <div>
-            <input type="submit" id="comment_submit_btn" value="发 表" class="btn btn-info" />
+            <input type="submit" id="comment_submit_btn" value="发 表" class="btn btn-info"></input>
           </div>
         </div>
       </form>

@@ -1,5 +1,5 @@
 import {
-	CHANGE_OPTIONS
+  CHANGE_OPTIONS
 } from '../types'
 
 const state = {item: {currentPage: 1, itemsPerPage: 10,sortName:'publish_time',tagId: ''}}

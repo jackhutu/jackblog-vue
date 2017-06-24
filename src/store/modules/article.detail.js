@@ -1,7 +1,7 @@
 import api from '../../api'
 import {
-	ARTICLE_DETAIL,
-	TOGGLE_LIKE
+  ARTICLE_DETAIL,
+  TOGGLE_LIKE
 } from '../types'
 
 const state = {

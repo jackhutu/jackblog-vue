@@ -1,16 +1,16 @@
 <template>
 	<div class="login-sns">
 	  <ul>
-	  	<li v-for="item in logins" @click.stop.prevent="snsLogin(item)">
-	  		<a v-bind:class="item" href="#"><i v-bind:class="'fa fa-' + item"></i></a>
-	  	</li>
+      <li  v-for="(item,index) in logins" :key="index" @click.stop.prevent="snsLogin(item)">
+        <a v-bind:class="item" href="#"><i v-bind:class="'fa fa-' + item"></i></a>
+      </li>
 	  </ul>
 	</div>
 </template>
 
 <script>
 import {API_ROOT} from '../../config'
-import {getCookie} from '../../utils/authService'
+import {getCookie,isLogin} from '../../utils/authService'
 
 export default {
   props: {

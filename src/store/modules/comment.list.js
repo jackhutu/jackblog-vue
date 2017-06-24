@@ -1,10 +1,10 @@
 import api from '../../api'
 import {showMsg} from '../actions'
 import {
-	COMMENT_LIST,
-	SUCCESS_ADD_COMMENT,
-	SUCCESS_ADD_REPLY,
-	GET_COMMENT_LIST_FAILURE
+  COMMENT_LIST,
+  SUCCESS_ADD_COMMENT,
+  SUCCESS_ADD_REPLY,
+  GET_COMMENT_LIST_FAILURE
 } from '../types'
 
 const state = {

@@ -1,7 +1,7 @@
 import api from '../../api'
 import {
-	SUCCESS_GET_APPS,
-	FAILURE_GET_APPS
+  SUCCESS_GET_APPS,
+  FAILURE_GET_APPS
 } from '../types'
 
 const state = {

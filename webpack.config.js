@@ -16,21 +16,24 @@ let config = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[hash:8].[name].js',
+    filename: debug? '[name].js':'[hash:8].[name].js',
+    chunkFilename: debug? '[name].js':'[name].[chunkhash].js',
     publicPath: '/'
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env':{
-        'NODE_ENV': JSON.stringify('production')
+        'NODE_ENV': JSON.stringify(env)
       }
-    }),
+    }),    
     new CommonsChunkPlugin({
       name: 'vendor',
-      //filename:'vendor.js',
       minChunks: Infinity //Infinity
     }),
-    new ExtractTextPlugin({ filename: '[hash:8].style.css', disable: false, allChunks: true }),
+    new ExtractTextPlugin({ 
+      filename: debug?'[name].style.css':'[hash:8].style.css', 
+      disable: false, allChunks: true 
+    }),
     new HtmlWebpackPlugin({
       favicon:path.join(__dirname,'src/favicon.ico'),
       title: 'Jackblog vue版',
@@ -128,16 +131,18 @@ let config = {
     global: true,
     crypto: 'empty',
     process: true,
-    module: false,
-    clearImmediate: false,
-    setImmediate: false
+    console: false,
+    __filename: 'mock',
+    __dirname: 'mock',
+    Buffer: true,
+    setImmediate: true
   }
 }
 
 if (debug) {
   config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   )
   config.devServer = {
     contentBase: path.join(__dirname, 'src'),
@@ -153,28 +158,30 @@ if (debug) {
   }
 
 } else {
-  config.plugins.push(new UglifyJsPlugin({
-    beautify: false, //prod
-    output: {
-      comments: false
-    }, //prod
-    mangle: {
-      screw_ie8: true
-    }, //prod
-    compress: {
-      screw_ie8: true,
-      warnings: false,
-      conditionals: true,
-      unused: true,
-      comparisons: true,
-      sequences: true,
-      dead_code: true,
-      evaluate: true,
-      if_return: true,
-      join_vars: true,
-      negate_iife: false // we need this for lazy v8
-    }
-  }))
+  config.plugins.push(  
+    new UglifyJsPlugin({
+      beautify: false, //prod
+      output: {
+        comments: false
+      }, //prod
+      mangle: {
+        screw_ie8: true
+      }, //prod
+      compress: {
+        screw_ie8: true,
+        warnings: false,
+        conditionals: true,
+        unused: true,
+        comparisons: true,
+        sequences: true,
+        dead_code: true,
+        evaluate: true,
+        if_return: true,
+        join_vars: true,
+        negate_iife: false // we need this for lazy v8
+      }
+    })
+  )
 }
 
 module.exports = config

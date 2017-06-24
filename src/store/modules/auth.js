@@ -1,11 +1,11 @@
 import api from '../../api'
 import {showMsg,getCaptchaUrl} from '../actions'
 import {
-	LOGIN_SUCCESS,
-	USERINFO_SUCCESS,
-	USERINFO_FAILURE,
-	LOGOUT_USER,
-	UPDATE_USER_SUCCESS
+  LOGIN_SUCCESS,
+  USERINFO_SUCCESS,
+  USERINFO_FAILURE,
+  LOGOUT_USER,
+  UPDATE_USER_SUCCESS
 } from '../types'
 import { getCookie,saveCookie,signOut } from '../../utils/authService'
 import router from '../../router'

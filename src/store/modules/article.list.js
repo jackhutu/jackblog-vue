@@ -1,9 +1,9 @@
 import api from '../../api'
 import {
-	ARTICLE_LIST,
-	ADD_ARTICLE_LIST,
-	REQUEST_ARTICLE_LIST,
-	GET_ARTICLE_LIST_FAILURE
+  ARTICLE_LIST,
+  ADD_ARTICLE_LIST,
+  REQUEST_ARTICLE_LIST,
+  GET_ARTICLE_LIST_FAILURE
 } from '../types'
 
 const state = {

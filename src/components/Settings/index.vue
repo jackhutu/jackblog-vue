@@ -2,7 +2,7 @@
   <div class="settings-box">
     <div class="settings-container">
       <h2 class="title">设置</h2>
-      <hr />
+      <hr></hr>
       <div class="profile">
         <!-- 呢称邮件-->
         <div class="control-group" id="settingsForm">

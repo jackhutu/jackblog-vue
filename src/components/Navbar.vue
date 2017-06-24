@@ -30,7 +30,7 @@
 		            <i class="fa fa-sign-out"></i>
 		        </a>
 						<router-link :to="{ path: '/settings' }" class="navbar-item expanded-avatar" v-bind:title="auth.user.nickname">
-							<img :src="auth.user.avatar || defaultAvatar" />
+							<img :src="auth.user.avatar || defaultAvatar"></img>
 						</router-link>
 		      </div>
 	      	<div v-else>
@@ -43,7 +43,7 @@
 		  <div class="navbar-shrink">
 		  	<div v-if="auth.token && auth.user" class="pull-right">
 					<a href="javascript:;" class="shrink-avatar" @click="dropdown()">
-						<img :src="auth.user.avatar || defaultAvatar" /> 
+						<img :src="auth.user.avatar || defaultAvatar"></img>
 					</a>							
 					<ul class="dropdown-menu pull-right" id="dropdownMenu">
 						<li>

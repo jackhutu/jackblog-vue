@@ -1,7 +1,7 @@
 import api from '../../api'
 import {
-	SUCCESS_GET_SNSLOGINS,
-	FAILURE_GET_SNSLOGINS
+  SUCCESS_GET_SNSLOGINS,
+  FAILURE_GET_SNSLOGINS
 } from '../types'
 
 const state = {items:[]}

@@ -9,22 +9,22 @@
               <div class="input-group-addon">
                 <i class="fa fa-envelope-o"></i>
               </div>
-              <input type="text" name="email" v-model="user.email" v-validate="'required|email|min:3'" data-vv-delay="100" class="form-control" placeholder="邮箱" />
+              <input type="text" name="email" v-model="user.email" v-validate="'required|email|min:3'" data-vv-delay="100" class="form-control" placeholder="邮箱"></input>
             </div>
           </div>
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-unlock-alt"></i></div>
-              <input type="password" name="password" v-model="user.password" v-validate="'required|min:6'" class="form-control" placeholder="密码" />
+              <input type="password" name="password" v-model="user.password" v-validate="'required|min:6'" class="form-control" placeholder="密码"></input>
             </div>
           </div>
           <div class="form-group">
             <div class="col-xs-6 captcha-code">
-              <input type="text" name="captcha" v-model="user.captcha" v-validate="'required|min:5|max:6'" maxlength="6" class="form-control" placeholder="验证码" />
+              <input type="text" name="captcha" v-model="user.captcha" v-validate="'required|min:5|max:6'" maxlength="6" class="form-control" placeholder="验证码"></input>
             </div>
             <div class="col-xs-6 captcha-img">
               <a href="javascript:;" @click.prevent="getCaptchaUrl()">
-                <img :src="captchaUrl" />
+                <img :src="captchaUrl"></img>
               </a>
             </div>
   
@@ -78,11 +78,21 @@ export default {
       'localLogin'
     ]),
     login(scope) {
-      this.$validator.validateAll().then(() => {
+      this.$validator.validateAll(result => {
+        if (! result) {
+          // handle input errors.
+          return;
+        }
         this.localLogin(this.user)
+        // submit the form or whatever.
       }).catch(() => {
-        //提示错误
-      })
+        // this is an actual app logic error.
+      })      
+      // this.$validator.validateAll().then(() => {
+      //   this.localLogin(this.user)
+      // }).catch(() => {
+      //   //提示错误
+      // })
     }
   }
 }
