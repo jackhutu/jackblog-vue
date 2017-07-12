@@ -30,7 +30,7 @@
   "homepage": "https://github.com/jackhutu/jackblog-vue#readme",
   "devDependencies": {
     "babel-core": "^6.25.0",
-    "babel-loader": "^6.4.1",
+    "babel-loader": "^7.1.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
