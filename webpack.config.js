@@ -9,7 +9,7 @@ const env = process.env.NODE_ENV || 'development'
 const debug = env !== 'production'
 
 let config = {
-  devtool: debug ? 'cheap-module-eval-source-map' : 'hidden-source-map',
+  devtool: debug ? 'cheap-module-source-map' : 'hidden-source-map',
   entry: {
     vendor: ['vue','vuex','vue-router'],
     bundle: './src/index'

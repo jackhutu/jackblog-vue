@@ -15,7 +15,7 @@
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-unlock-alt"></i></div>
-              <input type="password" name="password" v-model="user.password" v-validate="'required|min:6'" class="form-control" placeholder="密码"></input>
+              <input type="password" name="password" v-model="user.password" v-validate="'required|min:5'" class="form-control" placeholder="密码"></input>
             </div>
           </div>
           <div class="form-group">
@@ -30,7 +30,7 @@
   
           </div>
           <div class="form-group">
-            <button class="btn btn-primary btn-lg btn-block" type="submit" id="signin_btn" :disabled="!fields.valid()">登 录</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" id="signin_btn">登 录</button>
           </div>
         </form>
       </div>
@@ -77,23 +77,16 @@ export default {
       'getCaptchaUrl',
       'localLogin'
     ]),
-    login(scope) {
-      this.$validator.validateAll(result => {
-        if (! result) {
-          // handle input errors.
-          return;
+    login() {  
+      this.$validator.validateAll().then(result => {
+        if(result){
+          this.localLogin(this.user)
         }
-        this.localLogin(this.user)
-        // submit the form or whatever.
       }).catch(() => {
-        // this is an actual app logic error.
-      })      
-      // this.$validator.validateAll().then(() => {
-      //   this.localLogin(this.user)
-      // }).catch(() => {
-      //   //提示错误
-      // })
+        //提示错误
+      })
     }
   }
 }
+//:disabled="!fields.valid()"
 </script>
