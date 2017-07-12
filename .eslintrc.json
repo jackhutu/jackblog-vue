@@ -4,19 +4,15 @@
     "es6": true,
     "node": true
   },
+  "parser": "babel-eslint",
   "extends": [
     "eslint:recommended",
-    "plugin:vue/recommended" // or 'plugin:vue/base'
+    "plugin:vue/base" // or 'plugin:vue/base'
   ],
   "parserOptions": {
+    "allowImportExportEverywhere": true,
     "sourceType": "module",
-    "ecmaVersion": 7,
-    "ecmaFeatures": {
-      "globalReturn": true,
-      "impliedStrict": true,
-      "experimentalObjectRestSpread":true,
-      "jsx": false
-    }
+    "codeFrame": false
   },
   "rules": {
     "indent": [

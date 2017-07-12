@@ -5,6 +5,6 @@
       "uglify": true
     }
   }]],
-  "plugins": ["transform-runtime","transform-object-rest-spread"],
+  "plugins": ["transform-runtime","transform-object-rest-spread","syntax-dynamic-import"],
   "comments": false
 }
