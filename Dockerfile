@@ -1,4 +1,4 @@
-FROM       jackhu/jenkins-deploy-nodejs:8
+FROM       jackhu/jenkins-deploy-nodejs:7
 MAINTAINER Jack Hu <hello@jackhu.top>
 
 EXPOSE  8400
