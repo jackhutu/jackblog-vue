@@ -2,8 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin')
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 const env = process.env.NODE_ENV || 'development'
 const debug = env !== 'production'
@@ -159,28 +159,7 @@ if (debug) {
 
 } else {
   config.plugins.push(  
-    new UglifyJsPlugin({
-      beautify: false, //prod
-      output: {
-        comments: false
-      }, //prod
-      mangle: {
-        screw_ie8: true
-      }, //prod
-      compress: {
-        screw_ie8: true,
-        warnings: false,
-        conditionals: true,
-        unused: true,
-        comparisons: true,
-        sequences: true,
-        dead_code: true,
-        evaluate: true,
-        if_return: true,
-        join_vars: true,
-        negate_iife: false // we need this for lazy v8
-      }
-    })
+    new UglifyJSPlugin()
   )
 }
 

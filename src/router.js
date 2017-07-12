@@ -6,13 +6,6 @@ const Settings = () => import('components/Settings/index')
 const Article = () => import('components/Article/index')
 const Apps = () => import('components/Apps/index')
 const NotFound = () => import('components/NotFound')
-
-// const Home = r => require.ensure([], () => r(require('components/Home/index')), 'home')
-// const Login = r => require.ensure([], () => r(require('components/Login/index')), 'login')
-// const Settings = r => require.ensure([], () => r(require('components/Settings/index')), 'settings')
-// const Article = r => require.ensure([], () => r(require('components/Article/index')), 'article')
-// const Apps = r => require.ensure([], () => r(require('components/Apps/index')), 'apps')
-// const NotFound = r => require.ensure([], () => r(require('components/NotFound')), 'notfound')
 import {isLogin} from './utils/authService'
 
 Vue.use(Router)

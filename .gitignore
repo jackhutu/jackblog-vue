@@ -10,13 +10,3 @@ npm-debug.log*
 .DS_Store
 node_modules
 #dist
-
-##push server
-#/*
-#!/dist
-#!server.js
-#!/logs
-#!package.json
-#!process.json
-#*.log
-#*.pid
