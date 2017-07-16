@@ -22,7 +22,10 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      meta:{
+        requiresNotAuth: true
+      }      
     },
     {
       path: '/settings',
@@ -59,10 +62,14 @@ router.beforeEach((to, from, next) => {
 
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!isLogin()) {
-      next({path: '/login'})
+      return next({path: '/login'})
     }
   }
-
+  if (to.matched.some(record => record.meta.requiresNotAuth)) {
+    if (isLogin()) {
+      return next({path: '/'})
+    }
+  }
   next()
 })
 export default router
