@@ -4,12 +4,13 @@
     "es6": true,
     "node": true
   },
-  "parser": "babel-eslint",
+  "parser": "vue-eslint-parser",
   "extends": [
     "eslint:recommended",
-    "plugin:vue/base" // or 'plugin:vue/base'
+    "plugin:vue/recommended" // or 'plugin:vue/base'
   ],
   "parserOptions": {
+    "parser": "babel-eslint",
     "allowImportExportEverywhere": true,
     "sourceType": "module",
     "codeFrame": false

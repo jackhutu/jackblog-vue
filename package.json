@@ -1,6 +1,6 @@
 {
   "name": "jackblog-vue",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Jackblog vue 版",
   "scripts": {
     "start": "npm-run-all --sequential build start:dist",
