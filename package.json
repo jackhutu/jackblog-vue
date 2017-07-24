@@ -44,7 +44,7 @@
     "eslint": "^4.3.0",
     "eslint-loader": "1.9.0",
     "eslint-plugin-vue": "3.5.0",
-    "extract-text-webpack-plugin": "2.1.2",
+    "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "0.11.2",
     "font-awesome": "4.7.0",
     "html-webpack-plugin": "^2.29.0",
