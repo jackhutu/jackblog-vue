@@ -8,7 +8,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const env = process.env.NODE_ENV || 'development'
 const debug = env !== 'production'
 
-let config = {
+const config = {
   devtool: debug ? 'cheap-module-source-map' : 'hidden-source-map',
   entry: {
     vendor: ['vue','vuex','vue-router'],

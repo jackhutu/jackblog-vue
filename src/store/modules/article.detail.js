@@ -13,7 +13,7 @@ const actions = {
     api.getFrontArticle(id).then(response => {
       if(response.ok){
         let isLike = false
-        let article = response.data.data
+        const article = response.data.data
         if(user){
           user.likes.map(item=>{
             if(item.toString() === article._id){
