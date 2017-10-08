@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const env = process.env.NODE_ENV || 'development'
 const debug = env !== 'production'
@@ -45,6 +46,9 @@ const config = {
         collapseWhitespace:true    //删除空白符与换行符
       }
     }),
+    new CopyWebpackPlugin([{
+      from: path.join(__dirname, 'src/CNAME'), to: path.join(__dirname, 'dist')
+    }])
   ],
   module: {
     rules: [

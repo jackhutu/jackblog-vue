@@ -1,6 +1,6 @@
 {
   "name": "jackblog-vue",
-  "version": "2.2.3",
+  "version": "2.3.0",
   "description": "Jackblog vue 版",
   "scripts": {
     "start": "npm-run-all --sequential build start:dist",
@@ -39,6 +39,7 @@
     "babel-runtime": "6.26.0",
     "babylon": "6.18.0",
     "bootstrap": "3.3.7",
+    "copy-webpack-plugin": "^4.1.1",
     "cross-env": "5.0.5",
     "css-loader": "^0.28.7",
     "eslint": "^4.7.0",
