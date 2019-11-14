@@ -1,0 +1,7 @@
+ports:
+  - port: 8400
+  onOpen: open-preview
+tasks:
+  - init: npm install
+  command: npm start
+
